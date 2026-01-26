@@ -1,41 +1,41 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router";
 import logo from "@/assets/DIMPL_Logo_Long_SVG.svg";
 
 const Header: React.FC = () => {
   const navigate = useNavigate();
-  const [currentTime, setCurrentTime] = useState(new Date());
-  const url = useLocation();
-  const path = url.pathname;
+  // const [currentTime, setCurrentTime] = useState(new Date());
+  // const url = useLocation();
+  // const path = url.pathname;
   // console.log(path)
   // useMemo(() => {
   //   path = url.pathname
   //   console.log(path)
   // }, [url.pathname])
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentTime(new Date());
-    }, 1000);
+  // useEffect(() => {
+  //   const timer = setInterval(() => {
+  //     setCurrentTime(new Date());
+  //   }, 1000);
 
-    return () => clearInterval(timer);
-  }, []);
+  //   return () => clearInterval(timer);
+  // }, []);
 
-  const formatTime = (date: Date) => {
-    return date.toLocaleTimeString("en-US", {
-      hour: "2-digit",
-      minute: "2-digit",
-      hour12: true,
-    });
-  };
+  // const formatTime = (date: Date) => {
+  //   return date.toLocaleTimeString("en-US", {
+  //     hour: "2-digit",
+  //     minute: "2-digit",
+  //     hour12: true,
+  //   });
+  // };
 
-  const formatDate = (date: Date) => {
-    return date.toLocaleDateString("en-US", {
-      weekday: "short",
-      month: "short",
-      day: "2-digit",
-    });
-  };
+  // const formatDate = (date: Date) => {
+  //   return date.toLocaleDateString("en-US", {
+  //     weekday: "short",
+  //     month: "short",
+  //     day: "2-digit",
+  //   });
+  // };
 
   return (
     // <header className="fixed h-24 top-0 left-0 w-full bg-white  shadow-sm border-b border-gray-200 dark:border-gray-700 px-6 py-4 z-50">
