@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { useLocation, useNavigate } from "react-router";
+import React from "react";
+import { useNavigate } from "react-router";
 import logo from "@/assets/DIMPL_Logo_Long_SVG.svg";
 
 const Header: React.FC = () => {
