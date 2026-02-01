@@ -5,15 +5,15 @@ import { Projects } from "../components/Projects";
 import { LocationMap } from "../components/LocationMap";
 import { Fleet } from "../components/Fleet";
 import { Clients } from "../components/Clients";
-import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
+import { FleetSlide } from "../components/FleetSlide";
 const HomeScreen = () => {
   return (
-    <div className="min-h-screen bg-white">
-      {/* <Header /> */}
+    <div className="bg-white">
       <main>
         <Hero />
         <Services />
+        <FleetSlide />
         <Statistics />
         <Projects />
         <LocationMap />
