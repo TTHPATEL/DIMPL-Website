@@ -1,14 +1,15 @@
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useRef, useState } from "react";
 
-import excavator from "@/assets/Machinary/Crane Hydra.png";
+import crane from "@/assets/Machinary/Crane Hydra.png";
 import dumper from "@/assets/Machinary/Dumper.png";
 import dozer from "@/assets/Machinary/Dozer.png";
-import machine from "@/assets/Machinary/Machine.png";
 import surfaceMiner from "@/assets/Machinary/Surface Miner.png";
 import loader from "@/assets/Machinary/Loader.png";
-import bgImage from "@/assets/BG IMAGE.jpg";
-
+import excavator from "@/assets/Machinary/Excavator.png";
+import grader from "@/assets/Machinary/Grader.png";
+import waterTanker from "@/assets/Machinary/Water Tanker.png";
+import staffBus from "@/assets/Machinary/Staff Bus.png";
 /* ---------------- DATA ---------------- */
 const fleetSlides = [
   {
@@ -18,10 +19,10 @@ const fleetSlides = [
     link: "/services/surface-miners",
   },
   {
-    title: "Excavators",
-    image: excavator,
-    desc: "High-performance excavators for mining and infrastructure projects.",
-    link: "/services/excavators",
+    title: "Crane Hydra",
+    image: crane,
+    desc: "High-performance cranes for mining and infrastructure projects.",
+    link: "/services/crane-hydra",
   },
   {
     title: "Dumpers",
@@ -36,10 +37,10 @@ const fleetSlides = [
     link: "/services/dozers",
   },
   {
-    title: "Machines",
-    image: machine,
-    desc: "Advanced machinery for large-scale industrial operations.",
-    link: "/services/machines",
+    title: "Excavators",
+    image: excavator,
+    desc: "Advanced excavators for large-scale industrial operations.",
+    link: "/services/excavators",
   },
 
   {
@@ -47,6 +48,25 @@ const fleetSlides = [
     image: loader,
     desc: "Reliable loaders ensuring fast and efficient loading operations.",
     link: "/services/loaders",
+  },
+
+  {
+    title: "Graders",
+    image: grader,
+    desc: "Reliable graders ensuring fast and efficient grading operations.",
+    link: "/services/graders",
+  },
+  {
+    title: "Water Tankers",
+    image: waterTanker,
+    desc: "Reliable water tankers ensuring fast and efficient water transportation.",
+    link: "/services/water-tankers",
+  },
+  {
+    title: "Staff Buses",
+    image: staffBus,
+    desc: "Reliable staff buses ensuring fast and efficient staff transportation.",
+    link: "/services/staff-buses",
   },
 ];
 
