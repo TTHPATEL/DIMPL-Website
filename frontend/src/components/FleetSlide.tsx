@@ -12,6 +12,12 @@ import bgImage from "@/assets/BG IMAGE.jpg";
 /* ---------------- DATA ---------------- */
 const fleetSlides = [
   {
+    title: "Surface Miners",
+    image: surfaceMiner,
+    desc: "Precision surface miners with cutting-edge mining technology.",
+    link: "/services/surface-miners",
+  },
+  {
     title: "Excavators",
     image: excavator,
     desc: "High-performance excavators for mining and infrastructure projects.",
@@ -35,12 +41,7 @@ const fleetSlides = [
     desc: "Advanced machinery for large-scale industrial operations.",
     link: "/services/machines",
   },
-  {
-    title: "Surface Miners",
-    image: surfaceMiner,
-    desc: "Precision surface miners with cutting-edge mining technology.",
-    link: "/services/surface-miners",
-  },
+
   {
     title: "Loaders",
     image: loader,
@@ -113,7 +114,9 @@ export function FleetSlide() {
     <>
       {/* SLIDER */}
       <section
-        className="relative w-full h-[720px] overflow-hidden select-none "
+        id="fleet"
+        // className="relative w-full h-[720px] pb-10 overflow-hidden select-none "
+        className="relative w-full h-screen overflow-hidden select-none"
         onMouseDown={(e) => startDrag(e.clientX)}
         onMouseMove={(e) => onMove(e.clientX)}
         onMouseUp={endDrag}
@@ -122,106 +125,111 @@ export function FleetSlide() {
         onTouchMove={(e) => onMove(e.touches[0].clientX)}
         onTouchEnd={endDrag}
       >
-        {/* HEADING */}
-        <div className="text-center">
-          <h2 className="text-4xl md:text-5xl font-bold text-[#605F5A] mb-4">
-            Our Fleet
-          </h2>
-          <div className="w-24 h-1 bg-[#E5710A] mx-auto mb-6"></div>
-          {/* <p className="text-lg text-[#605F5A]/80 max-w-3xl mx-auto">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          {/* <div
+            className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 absolute inset-0 bg-contain bg-center bg-no-repeat"
+            style={{ backgroundImage: `url(${bgImage})` }}
+          ></div> */}
+          <div className="text-center py-20">
+            <h2 className="text-4xl md:text-5xl font-bold text-[#605F5A] mb-4">
+              Our Fleet
+            </h2>
+            <div className="w-24 h-1 bg-[#E5710A] mx-auto mb-6"></div>
+            {/* <p className="text-lg text-[#605F5A]/80 max-w-3xl mx-auto">
           Comprehensive mining and infrastructure solutions backed by
           cutting-edge technology, experienced workforce, and unwavering
           commitment to safety and sustainability.
         </p> */}
-        </div>
-        {/* BACKGROUND */}
-        <div
-          className="absolute inset-0 bg-contain bg-center bg-no-repeat"
-          style={{ backgroundImage: `url(${bgImage})` }}
-        />
+          </div>
+          <div>
+            <h2 className="absolute inset-0 flex items-center justify-center z-10 text-7xl md:text-9xl lg:text-[10rem] font-extrabold tracking-widest text-transparent stroke-text">
+              DURGA INFRA
+            </h2>
+          </div>
+          {/* IMAGES */}
+          <div className="absolute inset-0 flex items-center justify-center z-20 overflow-hidden">
+            {prevIndex !== null && prevIndex !== current && (
+              <img
+                src={fleetSlides[prevIndex].image}
+                draggable={false}
+                onDragStart={(e) => e.preventDefault()}
+                className="absolute h-[260px] md:h-[320px] w-auto object-contain"
+                style={{
+                  animation:
+                    direction === "right"
+                      ? "exitToLeft 1.1s cubic-bezier(0.25, 0.8, 0.25, 1)"
+                      : "exitToRight 1.1s cubic-bezier(0.25, 0.8, 0.25, 1)",
+                }}
+              />
+            )}
 
-        {/* BRAND */}
-        <h2 className="absolute inset-0 flex items-center justify-center z-10 text-7xl md:text-9xl lg:text-[10rem] font-extrabold tracking-widest text-transparent stroke-text">
-          DURGA INFRA
-        </h2>
-
-        {/* IMAGES */}
-        <div className="absolute inset-0 flex items-center justify-center z-20 overflow-hidden">
-          {prevIndex !== null && prevIndex !== current && (
             <img
-              src={fleetSlides[prevIndex].image}
+              key={`current-${current}`}
               draggable={false}
               onDragStart={(e) => e.preventDefault()}
+              src={fleetSlides[current].image}
               className="absolute h-[260px] md:h-[320px] w-auto object-contain"
               style={{
-                animation:
-                  direction === "right"
-                    ? "exitToLeft 1.1s cubic-bezier(0.25, 0.8, 0.25, 1)"
-                    : "exitToRight 1.1s cubic-bezier(0.25, 0.8, 0.25, 1)",
+                transform: isDragging
+                  ? `translateX(${dragX}px)`
+                  : "translateX(0)",
+                animation: isDragging
+                  ? "none"
+                  : direction === "right"
+                    ? "enterFromRight 1.1s cubic-bezier(0.25, 0.8, 0.25, 1)"
+                    : "enterFromLeft 1.1s cubic-bezier(0.25, 0.8, 0.25, 1)",
               }}
             />
-          )}
-
-          <img
-            key={`current-${current}`}
-            draggable={false}
-            onDragStart={(e) => e.preventDefault()}
-            src={fleetSlides[current].image}
-            className="absolute h-[260px] md:h-[320px] w-auto object-contain"
-            style={{
-              transform: isDragging
-                ? `translateX(${dragX}px)`
-                : "translateX(0)",
-              animation: isDragging
-                ? "none"
-                : direction === "right"
-                  ? "enterFromRight 1.1s cubic-bezier(0.25, 0.8, 0.25, 1)"
-                  : "enterFromLeft 1.1s cubic-bezier(0.25, 0.8, 0.25, 1)",
-            }}
-          />
-        </div>
-
-        {/* TEXT */}
-        <div
-          key={current}
-          className="absolute bottom-20 left-1/2 -translate-x-1/2 z-30 text-center max-w-xl px-4 animate-textFadeUp"
-        >
-          <h3 className="text-2xl md:text-3xl font-bold text-[#605F5A] mb-2">
-            {fleetSlides[current].title}
-          </h3>
-          <p className="text-[#605F5A]/80 mb-4">{fleetSlides[current].desc}</p>
-          <a
-            href={fleetSlides[current].link}
-            className="inline-flex items-center text-[#E5710A] font-semibold"
+          </div>
+          {/* TEXT */}
+          <div
+            key={current}
+            className="absolute bottom-20 left-1/2 -translate-x-1/2 z-30 text-center max-w-xl px-4 animate-textFadeUp"
           >
-            Read more →
-          </a>
+            <h3 className="text-2xl md:text-3xl font-bold text-[#605F5A] mb-2">
+              {fleetSlides[current].title}
+            </h3>
+            <p className="text-[#605F5A]/80 mb-4">
+              {fleetSlides[current].desc}
+            </p>
+            <a
+              href={fleetSlides[current].link}
+              className="inline-flex items-center text-white font-semibold bg-[#333740] py-2 px-3 rounded-2xl"
+            >
+              Read more <span className="pl-2">→</span>
+            </a>
+          </div>
+          {/* ARROWS */}
+          <button
+            onMouseDown={(e) => e.stopPropagation()}
+            onTouchStart={(e) => e.stopPropagation()}
+            onClick={(e) => {
+              e.stopPropagation();
+              changeSlide("left");
+            }}
+            className="absolute left-6 md:left-31 top-1/2 -translate-y-1/2 z-30 bg-transparent hover:bg-[#E5710A] hover:text-white cursor-pointer p-2 rounded-full"
+          >
+            <div className="flex items-center">
+              <ChevronLeft size={28} />
+              <ChevronLeft size={28} />
+            </div>
+          </button>
+
+          <button
+            onMouseDown={(e) => e.stopPropagation()}
+            onTouchStart={(e) => e.stopPropagation()}
+            onClick={(e) => {
+              e.stopPropagation();
+              changeSlide("right");
+            }}
+            className="absolute right-6 md:right-32 top-1/2 -translate-y-1/2 z-30 bg-transparent hover:bg-[#E5710A] hover:text-white cursor-pointer p-2 rounded-full"
+          >
+            <div className="flex items-center">
+              <ChevronRight size={28} />
+              <ChevronRight size={28} />
+            </div>
+          </button>
         </div>
-
-        {/* ARROWS */}
-        <button
-          onMouseDown={(e) => e.stopPropagation()}
-          onTouchStart={(e) => e.stopPropagation()}
-          onClick={(e) => {
-            e.stopPropagation();
-            changeSlide("left");
-          }}
-          className="absolute left-6 md:left-12 top-1/2 -translate-y-1/2 z-30 bg-white/90 hover:bg-[#E5710A] hover:text-white cursor-pointer p-3 rounded-full"
-        >
-          <ChevronLeft size={28} />
-        </button>
-
-        <button
-          onMouseDown={(e) => e.stopPropagation()}
-          onTouchStart={(e) => e.stopPropagation()}
-          onClick={(e) => {
-            e.stopPropagation();
-            changeSlide("right");
-          }}
-          className="absolute right-6 md:right-12 top-1/2 -translate-y-1/2 z-30 bg-white/90 hover:bg-[#E5710A] hover:text-white p-3 rounded-full"
-        >
-          <ChevronRight size={28} />
-        </button>
       </section>
     </>
   );

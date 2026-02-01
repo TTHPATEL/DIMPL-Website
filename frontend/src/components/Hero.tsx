@@ -5,7 +5,8 @@ export function Hero() {
   return (
     <section
       id="home"
-      className="relative h-[100vh] min-h-[600px] flex items-center pt-[88px] overflow-hidden"
+      // className="relative h-[100vh] min-h-[600px] flex items-center pt-[88px] overflow-hidden"
+      className="relative h-screen flex items-center overflow-hidden"
     >
       {/* Background Video */}
       <div className="absolute inset-0 z-0">
