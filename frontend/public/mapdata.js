@@ -13,7 +13,7 @@ var simplemaps_countrymap_mapdata = {
     state_url: "",
     border_size: 1.5,
     all_states_inactive: "yes",
-    all_states_zoomable: "yes",
+    all_states_zoomable: "no",
 
     //Location defaults
     location_description: "Location description",
@@ -33,7 +33,7 @@ var simplemaps_countrymap_mapdata = {
     //Label defaults
     label_color: "#ffffff",
     label_hover_color: "#ffffff",
-    label_size: 16,
+    label_size: 35,
     label_font: "Arial",
     label_display: "auto",
     label_scale: "yes",
@@ -294,6 +294,8 @@ var simplemaps_countrymap_mapdata = {
     INMP: {
       name: "Madhya Pradesh",
       parent_id: "INMP",
+      x: 380,
+      y: 500,
     },
     INMZ: {
       name: "Mizoram",
