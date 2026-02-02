@@ -1,6 +1,6 @@
 import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
-import logo from "@/assets/DIMPL_Logo_Long_SVG.svg";
+import logo from "@/assets/Logo/DIMPL_Logo_Long_SVG.svg";
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);

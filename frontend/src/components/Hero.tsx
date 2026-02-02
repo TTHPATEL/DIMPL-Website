@@ -1,5 +1,5 @@
-import { ChevronRight } from "lucide-react";
-import miningVideo from "@/assets/Durga Mining 4K.mp4";
+// import { ChevronRight } from "lucide-react";
+// import miningVideo from "@/assets/Video/Durga Mining 4K.mp4";
 import bgImage from "@/assets/BG Images/BG2.png";
 export function Hero() {
   return (
