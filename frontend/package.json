@@ -12,6 +12,8 @@
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
+    "@amcharts/amcharts5": "^5.15.5",
+    "@amcharts/amcharts5-geodata": "^5.1.5",
     "@tailwindcss/vite": "^4.1.18",
     "lucide-react": "^0.563.0",
     "react": "^19.2.0",

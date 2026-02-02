@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { LOCATION_DATA } from "../data/LocationData";
 import type { Site } from "../data/LocationData";
 import { MapPin, Info } from "lucide-react";
+import IndiaMap from "./IndiaMap";
 
 declare global {
   interface Window {
@@ -111,7 +112,8 @@ export function LocationMap() {
         <div className="flex flex-col lg:flex-row gap-8 items-start">
           {/* MAP CONTAINER */}
           <div className="w-full lg:w-1/2">
-            <div id="map" className="w-full h-full" />
+            {/* <div id="map" className="w-full h-full" /> */}
+            <IndiaMap />
           </div>
 
           {/* DETAILS CARD */}
