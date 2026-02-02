@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { LOCATION_DATA } from "../data/LocationData";
 import type { Site } from "../data/LocationData";
-import { MapPin, Info } from "lucide-react";
+import { MapPin } from "lucide-react";
+// import { Info } from "lucide-react";
 
 declare global {
   interface Window {
