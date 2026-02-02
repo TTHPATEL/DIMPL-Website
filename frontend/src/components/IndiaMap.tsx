@@ -33,22 +33,42 @@ const IndiaMap: React.FC = () => {
       }),
     );
 
-    const highlightStates = ["MH", "KA", "TN"];
+    const highlightStates = [
+      "IN-GJ",
+      "IN-MP",
+      "IN-CT",
+      "IN-CG",
+      "IN-OR",
+      "IN-TG",
+    ];
 
     polygonSeries.mapPolygons.template.setAll({
       interactive: true,
       tooltipText: "{name}",
-      fill: am5.color(0xe0e0e0),
+      fill: am5.color(0xd4e2ef), // Default fill
       stroke: am5.color(0xffffff),
       strokeWidth: 1,
     });
 
     polygonSeries.mapPolygons.template.states.create("hover", {
-      fill: am5.color(0x67b7dc),
+      fill: am5.color(0x3b729f), // Default hover
     });
 
     polygonSeries.mapPolygons.template.states.create("active", {
       fill: am5.color(0x414a2f),
+    });
+
+    // Apply specific styles to highlight states after data is validated
+    polygonSeries.events.on("datavalidated", () => {
+      polygonSeries.mapPolygons.each((polygon) => {
+        const dataContext = polygon.dataItem?.dataContext as { id: string };
+        if (dataContext && highlightStates.includes(dataContext.id)) {
+          polygon.set("fill", am5.color(0xeea462));
+          polygon.states.create("hover", {
+            fill: am5.color(0xe5710a),
+          });
+        }
+      });
     });
 
     // Click event: only zoom when a state is clicked
