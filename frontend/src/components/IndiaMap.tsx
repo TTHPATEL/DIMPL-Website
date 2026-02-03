@@ -109,7 +109,11 @@ const IndiaMap: React.FC = () => {
 
       // Only zoom if it's a highlighted state
       if (dataContext && highlightStates.includes(dataContext.id)) {
-        chart.zoomToGeoBounds(polygon.dataItem.bbox);
+        // NEW ZOOMABLE AND SCALABLE CODE
+        // Use zoomToDataItem which provides better centering and scaling for specific map polygons
+        // This calculates the best zoom level and center point automatically for the selected state
+        polygonSeries.zoomToDataItem(polygon.dataItem!);
+
         polygon.setActive(true);
       }
     });
