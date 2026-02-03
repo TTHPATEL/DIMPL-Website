@@ -9,6 +9,7 @@ import {
   TrendingUp,
   Hammer,
   Package,
+  ArrowUpRight,
 } from "lucide-react";
 import IndiaMap from "./IndiaMap";
 
@@ -91,55 +92,212 @@ export function LocationMap() {
             {!selectedState ? (
               <div
                 style={{
-                  backgroundColor: "#FFFFFF",
+                  // backgroundColor: "#FFFFFF",
+
                   borderRadius: "16px",
-                  padding: "48px",
-                  boxShadow: "0 2px 12px rgba(0,0,0,0.06)",
-                  border: "1px solid #E5E5E5",
+                  padding: "40px",
+                  // boxShadow: "0 2px 12px rgba(0,0,0,0.06)",
+                  // border: "1px solid #E5E5E5",
                   display: "flex",
                   flexDirection: "column",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  textAlign: "center",
                   minHeight: "500px",
                 }}
               >
+                {/* Header Section */}
+                <div style={{ textAlign: "center", marginBottom: "32px" }}>
+                  <div
+                    style={{
+                      width: "64px",
+                      height: "64px",
+                      backgroundColor: "#E77B2E",
+                      borderRadius: "50%",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      margin: "0 auto 20px",
+                      boxShadow: "0 4px 12px rgba(231, 123, 46, 0.25)",
+                    }}
+                  >
+                    <MapPin size={32} color="#FFFFFF" strokeWidth={2.5} />
+                  </div>
+                  <h3
+                    style={{
+                      fontSize: "24px",
+                      fontWeight: "700",
+                      color: "#626162",
+                      marginBottom: "10px",
+                    }}
+                  >
+                    Discover Our Mining Operations
+                  </h3>
+                  <p
+                    style={{
+                      color: "#1F1F1F",
+                      opacity: 0.6,
+                      fontSize: "14px",
+                      lineHeight: "1.5",
+                    }}
+                  >
+                    Choose a highlighted state to view active project details.
+                  </p>
+                </div>
+
+                {/* Stats Grid */}
                 <div
                   style={{
-                    width: "72px",
-                    height: "72px",
-                    backgroundColor: "#F6F6F6",
-                    borderRadius: "50%",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
+                    display: "grid",
+                    gridTemplateColumns: "1fr 1fr",
+                    gap: "16px",
                     marginBottom: "24px",
                   }}
                 >
-                  <MapPin size={36} color="#E77B2E" strokeWidth={2} />
+                  <div
+                    style={{
+                      backgroundColor: "#F6F6F6",
+                      borderRadius: "12px",
+                      padding: "20px",
+                      textAlign: "center",
+                      // border: "1px solid #E5E5E5",
+                    }}
+                  >
+                    <p
+                      style={{
+                        fontSize: "32px",
+                        fontWeight: "800",
+                        color: "#E77B2E",
+                        margin: "0 0 8px 0",
+                        lineHeight: 1,
+                      }}
+                    >
+                      5
+                    </p>
+                    <p
+                      style={{
+                        fontSize: "13px",
+                        fontWeight: "600",
+                        color: "#626162",
+                        margin: 0,
+                        textTransform: "uppercase",
+                        letterSpacing: "0.5px",
+                      }}
+                    >
+                      States
+                    </p>
+                  </div>
+
+                  <div
+                    style={{
+                      backgroundColor: "#F6F6F6",
+                      borderRadius: "12px",
+                      padding: "20px",
+                      textAlign: "center",
+                      // border: "1px solid #E5E5E5",
+                    }}
+                  >
+                    <p
+                      style={{
+                        fontSize: "32px",
+                        fontWeight: "800",
+                        color: "#E77B2E",
+                        margin: "0 0 8px 0",
+                        lineHeight: 1,
+                      }}
+                    >
+                      7
+                    </p>
+                    <p
+                      style={{
+                        fontSize: "13px",
+                        fontWeight: "600",
+                        color: "#626162",
+                        margin: 0,
+                        textTransform: "uppercase",
+                        letterSpacing: "0.5px",
+                      }}
+                    >
+                      Active Sites
+                    </p>
+                  </div>
                 </div>
-                <h3
+
+                {/* Featured States */}
+                <div
                   style={{
-                    fontSize: "22px",
-                    fontWeight: "700",
-                    color: "#626162",
-                    marginBottom: "12px",
+                    backgroundColor: "#F6F6F6",
+                    borderRadius: "12px",
+                    padding: "20px",
+                    // border: "1px solid #E5E5E5",
                   }}
                 >
-                  Explore Our Mining Sites
-                </h3>
-                <p
+                  <p
+                    style={{
+                      fontSize: "12px",
+                      fontWeight: "700",
+                      color: "#626162",
+                      marginBottom: "12px",
+                      textTransform: "uppercase",
+                      letterSpacing: "0.5px",
+                    }}
+                  >
+                    Our Locations
+                  </p>
+                  <div
+                    style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}
+                  >
+                    {[
+                      "Gujarat",
+                      "Odisha",
+                      "Telangana",
+                      "Chhattisgarh",
+                      "Madhya Pradesh",
+                    ].map((state) => (
+                      <span
+                        key={state}
+                        style={{
+                          backgroundColor: "#ededed",
+                          color: "#1F1F1F",
+                          padding: "8px 14px",
+                          borderRadius: "6px",
+                          fontSize: "13px",
+                          fontWeight: "600",
+                          border: "1px solid #E5E5E5",
+                        }}
+                      >
+                        {state}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Call to Action */}
+                <div
                   style={{
-                    color: "#1F1F1F",
-                    opacity: 0.6,
-                    maxWidth: "340px",
-                    lineHeight: "1.6",
-                    fontSize: "15px",
+                    marginTop: "auto",
+                    paddingTop: "24px",
+                    textAlign: "center",
                   }}
                 >
-                  Select a state on the map to view detailed information about
-                  our ongoing projects and mining operations.
-                </p>
+                  <button
+                    style={{
+                      display: "inline-flex",
+                      alignItems: "center",
+                      cursor: "pointer",
+                      transition: "all 0.3s ease",
+                      gap: "8px",
+                      backgroundColor: "#E77B2E",
+                      color: "#FFFFFF",
+                      padding: "12px 24px",
+                      borderRadius: "8px",
+                      fontSize: "14px",
+                      fontWeight: "700",
+                      letterSpacing: "0.3px",
+                      boxShadow: "0 2px 8px rgba(231, 123, 46, 0.3)",
+                    }}
+                  >
+                    <ArrowUpRight size={18} strokeWidth={2.5} />
+                    View All Projects
+                  </button>
+                </div>
               </div>
             ) : (
               <div className="flex flex-col gap-5">
@@ -197,24 +355,6 @@ export function LocationMap() {
                               objectFit: "cover",
                             }}
                           />
-                          {/* SITE Badge - Moved to LEFT */}
-                          {/* <div
-                            style={{
-                              position: "absolute",
-                              top: "12px",
-                              left: "12px",
-                              backgroundColor: "#626162",
-                              padding: "7px 18px",
-                              borderRadius: "6px",
-                              fontSize: "11px",
-                              fontWeight: "800",
-                              letterSpacing: "0.8px",
-                              color: "#FFFFFF",
-                              zIndex: 1,
-                            }}
-                          >
-                            SITE {toRoman(index + 1)}
-                          </div> */}
                         </div>
 
                         {/* Content Section */}
