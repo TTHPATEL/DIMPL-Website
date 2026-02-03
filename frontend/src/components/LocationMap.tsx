@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { LOCATION_DATA } from "../data/LocationData";
 import type { Site } from "../data/LocationData";
-import { MapPin, Info } from "lucide-react";
+import { MapPin, Info, ChevronRight, ChevronLeft } from "lucide-react";
 import IndiaMap from "./IndiaMap";
 
 declare global {
@@ -13,6 +13,7 @@ declare global {
 export function LocationMap() {
   const [selectedState, setSelectedState] = useState<string | null>(null);
   const [selectedSites, setSelectedSites] = useState<Site[]>([]);
+  const scrollRef = useRef<HTMLDivElement>(null);
 
   const handleStateSelect = (stateId: string | null) => {
     setSelectedState(stateId);
@@ -21,6 +22,38 @@ export function LocationMap() {
     } else {
       setSelectedSites([]);
     }
+  };
+
+  const scroll = (direction: "left" | "right") => {
+    if (scrollRef.current) {
+      const { scrollLeft, clientWidth } = scrollRef.current;
+      const scrollTo =
+        direction === "left"
+          ? scrollLeft - clientWidth
+          : scrollLeft + clientWidth;
+      scrollRef.current.scrollTo({ left: scrollTo, behavior: "smooth" });
+    }
+  };
+
+  const toRoman = (num: number) => {
+    const romanMap: { [key: number]: string } = {
+      10: "X",
+      9: "IX",
+      5: "V",
+      4: "IV",
+      1: "I",
+    };
+    let result = "";
+    const keys = Object.keys(romanMap)
+      .map(Number)
+      .sort((a, b) => b - a);
+    for (const key of keys) {
+      while (num >= key) {
+        result += romanMap[key];
+        num -= key;
+      }
+    }
+    return result;
   };
 
   return (
@@ -99,113 +132,217 @@ export function LocationMap() {
                 </p>
               </div>
             ) : (
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: "24px",
-                  maxHeight: "800px",
-                  overflowY: "auto",
-                  paddingRight: "10px",
-                }}
-              >
-                {selectedSites.map((site) => (
+              <div className="flex flex-col gap-4">
+                <div className="flex justify-between items-center mb-2 px-2">
+                  <h3 className="text-2xl font-bold text-[#374151]">
+                    {selectedSites[0]?.state}
+                  </h3>
+                  <div className="flex items-center gap-2">
+                    <span className="bg-[#E5710A]/10 text-[#E5710A] px-3 py-1 rounded-full text-sm font-bold border border-[#E5710A]/20">
+                      {selectedSites.length}{" "}
+                      {selectedSites.length === 1 ? "Site" : "Sites"}
+                    </span>
+                  </div>
+                </div>
+
+                <div style={{ position: "relative" }}>
                   <div
-                    key={site.id}
+                    ref={scrollRef}
+                    className="flex gap-6 overflow-x-auto pb-6 hide-scrollbar"
                     style={{
-                      backgroundColor: "white",
-                      borderRadius: "16px",
-                      overflow: "hidden",
-                      boxShadow: "0 10px 30px rgba(0,0,0,0.08)",
-                      border: "1px solid #eee",
-                      transition: "transform 0.3s ease",
+                      scrollSnapType: "x mandatory",
+                      maxWidth: "100%",
+                      msOverflowStyle: "none",
+                      scrollbarWidth: "none",
                     }}
                   >
-                    <div
-                      style={{
-                        position: "relative",
-                        height: "240px",
-                        overflow: "hidden",
-                      }}
-                    >
-                      <img
-                        src={site.image}
-                        alt={site.name}
-                        style={{
-                          width: "100%",
-                          height: "100%",
-                          objectFit: "cover",
-                        }}
-                      />
+                    {selectedSites.map((site, index) => (
                       <div
+                        key={site.id}
+                        style={{
+                          backgroundColor: "white",
+                          borderRadius: "20px",
+                          overflow: "hidden",
+                          boxShadow: "0 10px 40px rgba(0,0,0,0.08)",
+                          border: "1px solid #eee",
+                          flexShrink: 0,
+                          width: "100%",
+                          scrollSnapAlign: "start",
+                        }}
+                      >
+                        <div
+                          style={{
+                            position: "relative",
+                            height: "240px",
+                            overflow: "hidden",
+                          }}
+                        >
+                          <img
+                            src={site.image}
+                            alt={site.name}
+                            style={{
+                              width: "100%",
+                              height: "100%",
+                              objectFit: "cover",
+                            }}
+                          />
+                          <div
+                            style={{
+                              position: "absolute",
+                              top: "16px",
+                              right: "16px",
+                              backgroundColor: "#374151",
+                              padding: "6px 16px",
+                              borderRadius: "20px",
+                              fontSize: "11px",
+                              fontWeight: "800",
+                              letterSpacing: "1px",
+                              color: "white",
+                              zIndex: 1,
+                              boxShadow: "0 4px 12px rgba(0,0,0,0.2)",
+                            }}
+                          >
+                            SITE {toRoman(index + 1)}
+                          </div>
+                          <div
+                            style={{
+                              position: "absolute",
+                              bottom: "16px",
+                              left: "16px",
+                              backgroundColor: "rgba(255, 255, 255, 0.95)",
+                              padding: "6px 14px",
+                              borderRadius: "20px",
+                              fontSize: "12px",
+                              fontWeight: "bold",
+                              color: "#E5710A",
+                              boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
+                            }}
+                          >
+                            Mining Operation
+                          </div>
+                        </div>
+
+                        <div style={{ padding: "24px" }}>
+                          <h3
+                            style={{
+                              margin: "0 0 8px 0",
+                              fontSize: "22px",
+                              fontWeight: "bold",
+                              color: "#374151",
+                            }}
+                          >
+                            {site.name}
+                          </h3>
+                          <div
+                            style={{
+                              display: "flex",
+                              alignItems: "center",
+                              fontSize: "14px",
+                              color: "#6b7280",
+                              marginBottom: "16px",
+                            }}
+                          >
+                            <MapPin
+                              size={16}
+                              style={{ marginRight: "6px", color: "#E5710A" }}
+                            />
+                            {site.location}
+                          </div>
+                          <div
+                            style={{
+                              height: "1px",
+                              backgroundColor: "#f3f4f6",
+                              marginBottom: "16px",
+                            }}
+                          />
+                          <p
+                            style={{
+                              margin: 0,
+                              fontSize: "15px",
+                              color: "#4b5563",
+                              lineHeight: "1.7",
+                            }}
+                          >
+                            {site.description}
+                          </p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+
+                  {selectedSites.length > 1 && (
+                    <>
+                      <button
+                        onClick={() => scroll("left")}
                         style={{
                           position: "absolute",
-                          top: "16px",
-                          right: "16px",
-                          backgroundColor: "rgba(255, 255, 255, 0.9)",
-                          padding: "6px 14px",
-                          borderRadius: "20px",
-                          fontSize: "12px",
-                          fontWeight: "bold",
-                          color: "#E5710A",
-                          boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
-                        }}
-                      >
-                        {site.state}
-                      </div>
-                    </div>
-
-                    <div style={{ padding: "24px" }}>
-                      <h3
-                        style={{
-                          margin: "0 0 8px 0",
-                          fontSize: "20px",
-                          fontWeight: "bold",
-                          color: "#374151",
-                        }}
-                      >
-                        {site.name}
-                      </h3>
-                      <div
-                        style={{
+                          left: "-20px",
+                          top: "50%",
+                          transform: "translateY(-50%)",
+                          backgroundColor: "white",
+                          border: "1px solid #eee",
+                          borderRadius: "50%",
+                          width: "44px",
+                          height: "44px",
                           display: "flex",
                           alignItems: "center",
-                          fontSize: "14px",
-                          color: "#6b7280",
-                          marginBottom: "16px",
+                          justifyContent: "center",
+                          boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+                          cursor: "pointer",
+                          zIndex: 10,
+                          color: "#E5710A",
+                          transition: "all 0.2s ease",
                         }}
+                        className="hover:scale-110 active:scale-95"
                       >
-                        <MapPin
-                          size={16}
-                          style={{ marginRight: "6px", color: "#E5710A" }}
-                        />
-                        {site.location}
-                      </div>
-                      <div
+                        <ChevronLeft size={24} />
+                      </button>
+                      <button
+                        onClick={() => scroll("right")}
                         style={{
-                          height: "1px",
-                          backgroundColor: "#f3f4f6",
-                          marginBottom: "16px",
+                          position: "absolute",
+                          right: "-20px",
+                          top: "50%",
+                          transform: "translateY(-50%)",
+                          backgroundColor: "white",
+                          border: "1px solid #eee",
+                          borderRadius: "50%",
+                          width: "44px",
+                          height: "44px",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+                          cursor: "pointer",
+                          zIndex: 10,
+                          color: "#E5710A",
+                          transition: "all 0.2s ease",
                         }}
-                      />
-                      <p
-                        style={{
-                          margin: 0,
-                          fontSize: "15px",
-                          color: "#4b5563",
-                          lineHeight: "1.6",
-                        }}
+                        className="hover:scale-110 active:scale-95"
                       >
-                        {site.description}
-                      </p>
-                    </div>
+                        <ChevronRight size={24} />
+                      </button>
+                    </>
+                  )}
+                </div>
+
+                {selectedSites.length > 1 && (
+                  <div className="flex items-center justify-center gap-2 text-sm text-[#6b7280] font-medium">
+                    <span className="w-12 h-px bg-gray-200" />
+                    <span>Swipe or click to browse</span>
+                    <span className="w-12 h-px bg-gray-200" />
                   </div>
-                ))}
+                )}
               </div>
             )}
           </div>
         </div>
       </div>
+      <style>{`
+        .hide-scrollbar::-webkit-scrollbar {
+          display: none;
+        }
+      `}</style>
     </section>
   );
 }
