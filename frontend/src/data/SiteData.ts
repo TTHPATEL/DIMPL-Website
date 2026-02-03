@@ -1,5 +1,11 @@
 import mine1 from "../assets/Mines/mine1.jpg";
 import mine2 from "../assets/Mines/mine2.png";
+import TL1 from "../assets/Mines/TL1.png";
+import TL2 from "../assets/Mines/TL2.png";
+import CT from "../assets/Mines/CT.png";
+import MP from "../assets/Mines/MP.png";
+import OD from "../assets/Mines/OD.png";
+import GJ from "../assets/Mines/GJ.png";
 
 export interface Site {
   id: string;
@@ -28,8 +34,7 @@ export const LOCATION_DATA: Record<string, Site[]> = {
       state: "Gujarat",
       description:
         "A major lignite mining project contributing significantly to the region's energy needs with sustainable mining practices.",
-      image:
-        "https://images.unsplash.com/photo-1579547621113-e4bb2a19bdd6?q=80&w=800&auto=format&fit=crop",
+      image: GJ,
     },
   ],
 
@@ -46,8 +51,7 @@ export const LOCATION_DATA: Record<string, Site[]> = {
       state: "Odisha",
       description:
         "One of the key opencast coal mining projects in Odisha, utilizing advanced technology for operational efficiency.",
-      image:
-        "https://images.unsplash.com/photo-1678732684877-38435d070557?q=80&w=800&auto=format&fit=crop",
+      image: OD,
     },
   ],
 
@@ -64,7 +68,7 @@ export const LOCATION_DATA: Record<string, Site[]> = {
       state: "Telangana",
       description:
         "Part of the expansive Manuguru mining area, known for its high-quality output and safety standards.",
-      image: mine1,
+      image: TL1,
     },
     {
       id: "tel-2",
@@ -95,8 +99,7 @@ export const LOCATION_DATA: Record<string, Site[]> = {
       state: "Chhattisgarh",
       description:
         "A significant coal block project in Surguja, playing a vital role in fueling thermal power generation.",
-      image:
-        "https://images.unsplash.com/photo-1605218427306-022ba951dd0c?q=80&w=800&auto=format&fit=crop",
+      image: CT,
     },
   ],
 
@@ -113,8 +116,7 @@ export const LOCATION_DATA: Record<string, Site[]> = {
       state: "Madhya Pradesh",
       description:
         "Located in the mineral-rich belt of Madhya Pradesh, this mine focuses on sustainable coal extraction.",
-      image:
-        "https://images.unsplash.com/photo-1629805407005-7284643b9df7?q=80&w=800&auto=format&fit=crop",
+      image: MP,
     },
   ],
 };
