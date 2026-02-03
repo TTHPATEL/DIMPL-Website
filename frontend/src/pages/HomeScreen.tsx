@@ -7,6 +7,7 @@ import { Fleet } from "../components/Fleet";
 import { Clients } from "../components/Clients";
 import { Footer } from "../components/Footer";
 import { FleetSlide } from "../components/FleetSlide";
+import { PerformanceStatsPremium } from "../components/PerformanceStatsPremium";
 const HomeScreen = () => {
   return (
     <div className="bg-white">
@@ -14,10 +15,8 @@ const HomeScreen = () => {
         <Hero />
         <Services />
         <FleetSlide />
-        <Statistics />
-        <Projects />
         <LocationMap />
-        <Fleet />
+        <PerformanceStatsPremium />
         <Clients />
       </main>
       <Footer />

@@ -1,4 +1,4 @@
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { useRef, useState } from "react";
 
 import crane from "@/assets/Machinary/Crane Hydra.png";
@@ -212,12 +212,15 @@ export function FleetSlide() {
             <p className="text-[#605F5A]/80 mb-4">
               {fleetSlides[current].desc}
             </p>
-            <a
-              href={fleetSlides[current].link}
-              className="inline-flex items-center text-white font-semibold bg-[#333740] py-2 px-3 rounded-2xl"
+            <button
+              // className="inline-flex items-center text-white font-semibold bg-[#333740] py-2 px-3 rounded-2xl"
+              className="inline-flex items-center text-white font-semibold bg-[#E77B2E] py-2 px-3 rounded-2xl cursor-pointer transition-all duration-300 ease-in-out"
             >
-              Read more <span className="pl-2">→</span>
-            </a>
+              <span className="pr-1">
+                <ArrowUpRight size={18} strokeWidth={2.5} />
+              </span>
+              Explore More
+            </button>
           </div>
           {/* ARROWS */}
           <button
@@ -227,7 +230,7 @@ export function FleetSlide() {
               e.stopPropagation();
               changeSlide("left");
             }}
-            className="absolute left-6 md:left-31 top-1/2 -translate-y-1/2 z-30 bg-transparent hover:bg-[#E5710A] hover:text-white cursor-pointer p-2 rounded-full"
+            className="absolute left-6 md:left-38 top-1/2 -translate-y-1/2 z-30 bg-transparent hover:bg-[#E5710A] hover:text-white cursor-pointer p-2 rounded-full"
           >
             <div className="flex items-center">
               <ChevronLeft size={28} />
@@ -242,7 +245,7 @@ export function FleetSlide() {
               e.stopPropagation();
               changeSlide("right");
             }}
-            className="absolute right-6 md:right-32 top-1/2 -translate-y-1/2 z-30 bg-transparent hover:bg-[#E5710A] hover:text-white cursor-pointer p-2 rounded-full"
+            className="absolute right-6 md:right-38 top-1/2 -translate-y-1/2 z-30 bg-transparent hover:bg-[#E5710A] hover:text-white cursor-pointer p-2 rounded-full"
           >
             <div className="flex items-center">
               <ChevronRight size={28} />

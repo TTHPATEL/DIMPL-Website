@@ -122,7 +122,7 @@ export function LocationMap() {
                   </div>
                   <h3
                     style={{
-                      fontSize: "24px",
+                      fontSize: "26px",
                       fontWeight: "700",
                       color: "#626162",
                       marginBottom: "10px",
@@ -134,7 +134,7 @@ export function LocationMap() {
                     style={{
                       color: "#1F1F1F",
                       opacity: 0.6,
-                      fontSize: "14px",
+                      fontSize: "16px",
                       lineHeight: "1.5",
                     }}
                   >
@@ -162,7 +162,7 @@ export function LocationMap() {
                   >
                     <p
                       style={{
-                        fontSize: "32px",
+                        fontSize: "34px",
                         fontWeight: "800",
                         color: "#E77B2E",
                         margin: "0 0 8px 0",
@@ -173,7 +173,7 @@ export function LocationMap() {
                     </p>
                     <p
                       style={{
-                        fontSize: "13px",
+                        fontSize: "15px",
                         fontWeight: "600",
                         color: "#626162",
                         margin: 0,
@@ -196,7 +196,7 @@ export function LocationMap() {
                   >
                     <p
                       style={{
-                        fontSize: "32px",
+                        fontSize: "34px",
                         fontWeight: "800",
                         color: "#E77B2E",
                         margin: "0 0 8px 0",
@@ -207,7 +207,7 @@ export function LocationMap() {
                     </p>
                     <p
                       style={{
-                        fontSize: "13px",
+                        fontSize: "15px",
                         fontWeight: "600",
                         color: "#626162",
                         margin: 0,
@@ -231,7 +231,7 @@ export function LocationMap() {
                 >
                   <p
                     style={{
-                      fontSize: "12px",
+                      fontSize: "15px",
                       fontWeight: "700",
                       color: "#626162",
                       marginBottom: "12px",
