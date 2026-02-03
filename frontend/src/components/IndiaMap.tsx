@@ -4,7 +4,7 @@ import * as am5 from "@amcharts/amcharts5";
 import * as am5map from "@amcharts/amcharts5/map";
 import am5geodata_indiaLow from "@amcharts/amcharts5-geodata/indiaLow";
 import am5themes_Animated from "@amcharts/amcharts5/themes/Animated";
-import { LOCATION_DATA } from "../data/LocationData";
+import { LOCATION_DATA } from "../data/SiteData";
 
 interface IndiaMapProps {
   onStateSelect?: (stateId: string | null) => void;

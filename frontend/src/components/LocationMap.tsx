@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
-import { LOCATION_DATA } from "../data/LocationData";
-import type { Site } from "../data/LocationData";
+import { LOCATION_DATA } from "../data/SiteData";
+import type { Site } from "../data/SiteData";
 import { MapPin, Info, ChevronRight, ChevronLeft } from "lucide-react";
 import IndiaMap from "./IndiaMap";
 
