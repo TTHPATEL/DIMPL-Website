@@ -1,4 +1,5 @@
-import React, { useLayoutEffect, useRef } from "react";
+import React, { useLayoutEffect, useRef, useState } from "react";
+import { ZoomOut } from "lucide-react";
 import * as am5 from "@amcharts/amcharts5";
 import * as am5map from "@amcharts/amcharts5/map";
 import am5geodata_indiaLow from "@amcharts/amcharts5-geodata/indiaLow";
@@ -7,6 +8,7 @@ import am5themes_Animated from "@amcharts/amcharts5/themes/Animated";
 const IndiaMap: React.FC = () => {
   const chartRef = useRef<HTMLDivElement>(null);
   const chartRootRef = useRef<am5.Root | null>(null);
+  const [isZoomed, setIsZoomed] = useState(false);
 
   useLayoutEffect(() => {
     if (!chartRef.current) return;
@@ -98,6 +100,9 @@ const IndiaMap: React.FC = () => {
           polygon.states.create("hover", {
             fill: am5.color(0xe5710a), // Darker orange on hover
           });
+
+          // Show pointer cursor on highlighted states
+          polygon.set("cursorOverStyle", "pointer");
         }
       });
     });
@@ -109,9 +114,10 @@ const IndiaMap: React.FC = () => {
 
       // Only zoom if it's a highlighted state
       if (dataContext && highlightStates.includes(dataContext.id)) {
-        // NEW ZOOMABLE AND SCALABLE CODE
-        // Use zoomToDataItem which provides better centering and scaling for specific map polygons
-        // This calculates the best zoom level and center point automatically for the selected state
+        // Show the back button immediately
+        setIsZoomed(true);
+
+        // Zoom to the state
         polygonSeries.zoomToDataItem(polygon.dataItem!);
 
         polygon.setActive(true);
@@ -125,6 +131,8 @@ const IndiaMap: React.FC = () => {
 
   // Back button resets the view and active states
   const handleBackClick = () => {
+    setIsZoomed(false);
+
     if (!chartRootRef.current) return;
 
     chartRootRef.current.container.children.each((child: any) => {
@@ -139,11 +147,34 @@ const IndiaMap: React.FC = () => {
   };
 
   return (
-    <div>
-      <div ref={chartRef} style={{ width: "100%", height: "600px" }} />
-      <button onClick={handleBackClick} style={{ marginTop: 10 }}>
-        Back to India
-      </button>
+    <div style={{ position: "relative", width: "100%", height: "600px" }}>
+      <div ref={chartRef} style={{ width: "100%", height: "100%" }} />
+      {isZoomed && (
+        <button
+          onClick={handleBackClick}
+          style={{
+            position: "absolute",
+            top: "20px",
+            left: "20px",
+            zIndex: 9999, // Ensure it is on top of everything
+            padding: "10px 15px",
+            background: "white",
+            color: "black",
+            borderRadius: "5px",
+            border: "1px solid #ccc",
+            cursor: "pointer",
+            display: "flex",
+            alignItems: "center",
+            gap: "8px", // Space between icon and text
+            boxShadow: "0 4px 6px rgba(0,0,0,0.1)",
+            fontWeight: "bold",
+          }}
+          title="Back to India"
+        >
+          <ZoomOut size={20} color="black" />
+          <span>Zoom Out</span>
+        </button>
+      )}
     </div>
   );
 };
