@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { LOCATION_DATA } from "../data/LocationData";
 import type { Site } from "../data/LocationData";
 import { MapPin, Info } from "lucide-react";
@@ -14,83 +14,14 @@ export function LocationMap() {
   const [selectedState, setSelectedState] = useState<string | null>(null);
   const [selectedSites, setSelectedSites] = useState<Site[]>([]);
 
-  useEffect(() => {
-    // Determine if scripts are already loaded
-    const isMapLoaded = document.getElementById("simplemaps-mapdata");
-    const isCountryLoaded = document.getElementById("simplemaps-countrymap");
-
-    if (!isMapLoaded) {
-      const mapdata = document.createElement("script");
-      mapdata.id = "simplemaps-mapdata";
-      mapdata.src = "/mapdata.js";
-      mapdata.async = false;
-      document.body.appendChild(mapdata);
+  const handleStateSelect = (stateId: string | null) => {
+    setSelectedState(stateId);
+    if (stateId && LOCATION_DATA[stateId]) {
+      setSelectedSites(LOCATION_DATA[stateId]);
+    } else {
+      setSelectedSites([]);
     }
-
-    if (!isCountryLoaded) {
-      const countrymap = document.createElement("script");
-      countrymap.id = "simplemaps-countrymap";
-      countrymap.src = "/countrymap.js";
-      countrymap.async = false;
-      document.body.appendChild(countrymap);
-    }
-
-    // Checking for the map object availability to attach hooks
-    const interval = setInterval(() => {
-      if (
-        window.simplemaps_countrymap &&
-        typeof window.simplemaps_countrymap.hooks !== "undefined"
-      ) {
-        clearInterval(interval);
-
-        window.simplemaps_countrymap.hooks.click_state = (id: string) => {
-          if (LOCATION_DATA[id]) {
-            setSelectedState(id);
-            const sites = LOCATION_DATA[id] || [];
-            setSelectedSites(sites);
-          }
-        };
-      }
-    }, 100);
-
-    // Add global click listener to capture map clicks immediately
-    const handleMapClick = (e: MouseEvent) => {
-      const target = e.target as HTMLElement | SVGElement;
-      // SimpleMaps usually adds classes like sm_state_INGJ
-      // search for class starting with sm_state_
-      let current: HTMLElement | SVGElement | null = target;
-      while (current && current.id !== "map") {
-        if (current.classList) {
-          for (let i = 0; i < current.classList.length; i++) {
-            const cls = current.classList[i];
-            if (cls.startsWith("sm_state_")) {
-              const stateId = cls.replace("sm_state_", "");
-              // Only update if it's a valid state ID from our data or map
-              if (stateId && LOCATION_DATA[stateId]) {
-                setSelectedState(stateId);
-                const sites = LOCATION_DATA[stateId] || [];
-                setSelectedSites(sites);
-                return; // Stop once we find the state
-              }
-            }
-          }
-        }
-        current = current.parentElement;
-      }
-    };
-
-    const mapElement = document.getElementById("map");
-    if (mapElement) {
-      mapElement.addEventListener("click", handleMapClick);
-    }
-
-    return () => {
-      clearInterval(interval);
-      if (mapElement) {
-        mapElement.removeEventListener("click", handleMapClick);
-      }
-    };
-  }, []);
+  };
 
   return (
     <section
@@ -112,81 +43,166 @@ export function LocationMap() {
         <div className="flex flex-col lg:flex-row gap-8 items-start">
           {/* MAP CONTAINER */}
           <div className="w-full lg:w-1/2">
-            {/* <div id="map" className="w-full h-full" /> */}
-            <IndiaMap />
+            <IndiaMap onStateSelect={handleStateSelect} />
           </div>
 
-          {/* DETAILS CARD */}
           <div className="w-full lg:w-1/2 flex flex-col gap-6">
-            {
-              !selectedState ? (
-                <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 flex flex-col items-center justify-center text-center h-[500px]">
-                  <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mb-4">
-                    <MapPin className="w-8 h-8 text-gray-400" />
-                  </div>
-                  <h3 className="text-xl font-semibold text-gray-800 mb-2">
-                    Explore Our Locations
-                  </h3>
-                  <p className="text-gray-500 max-w-sm">
-                    Click on a highlighted state in the map to view detailed
-                    information about our mining projects and sites.
-                  </p>
+            {!selectedState ? (
+              <div
+                style={{
+                  backgroundColor: "white",
+                  borderRadius: "24px",
+                  padding: "48px",
+                  boxShadow: "0 4px 20px rgba(0,0,0,0.05)",
+                  border: "1px solid #f0f0f0",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  textAlign: "center",
+                  height: "600px",
+                }}
+              >
+                <div
+                  style={{
+                    width: "80px",
+                    height: "80px",
+                    backgroundColor: "#f9fafb",
+                    borderRadius: "50%",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    marginBottom: "24px",
+                  }}
+                >
+                  <MapPin size={40} color="#E5710A" />
                 </div>
-              ) : selectedSites.length > 0 ? (
-                <div className="flex flex-col gap-6 max-h-[800px] overflow-y-auto pr-2 custom-scrollbar">
-                  {selectedSites.map((site) => (
+                <h3
+                  style={{
+                    fontSize: "24px",
+                    fontWeight: "bold",
+                    color: "#374151",
+                    marginBottom: "16px",
+                  }}
+                >
+                  Explore Our Locations
+                </h3>
+                <p
+                  style={{
+                    color: "#6b7280",
+                    maxWidth: "320px",
+                    lineHeight: "1.6",
+                  }}
+                >
+                  Click on a highlighted state in the map to view detailed
+                  information about our mining projects and sites.
+                </p>
+              </div>
+            ) : (
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "24px",
+                  maxHeight: "800px",
+                  overflowY: "auto",
+                  paddingRight: "10px",
+                }}
+              >
+                {selectedSites.map((site) => (
+                  <div
+                    key={site.id}
+                    style={{
+                      backgroundColor: "white",
+                      borderRadius: "16px",
+                      overflow: "hidden",
+                      boxShadow: "0 10px 30px rgba(0,0,0,0.08)",
+                      border: "1px solid #eee",
+                      transition: "transform 0.3s ease",
+                    }}
+                  >
                     <div
-                      key={site.id}
-                      className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-shadow duration-300"
+                      style={{
+                        position: "relative",
+                        height: "240px",
+                        overflow: "hidden",
+                      }}
                     >
-                      <div className="h-48 w-full relative overflow-hidden group">
-                        <img
-                          src={site.image}
-                          alt={site.name}
-                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                        />
-                        <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-semibold text-[#E5710A] shadow-sm">
-                          {site.state}
-                        </div>
-                      </div>
-
-                      <div className="p-6">
-                        <div className="flex items-start justify-between mb-4">
-                          <div>
-                            <h3 className="text-xl font-bold text-[#605F5A] mb-1">
-                              {site.name}
-                            </h3>
-                            <div className="flex items-center text-sm text-gray-500">
-                              <MapPin className="w-4 h-4 mr-1 text-[#E5710A]" />
-                              {site.location}
-                            </div>
-                          </div>
-                        </div>
-
-                        <div className="w-full h-px bg-gray-100 mb-4" />
-
-                        <p className="text-gray-600 leading-relaxed text-sm">
-                          {site.description}
-                        </p>
+                      <img
+                        src={site.image}
+                        alt={site.name}
+                        style={{
+                          width: "100%",
+                          height: "100%",
+                          objectFit: "cover",
+                        }}
+                      />
+                      <div
+                        style={{
+                          position: "absolute",
+                          top: "16px",
+                          right: "16px",
+                          backgroundColor: "rgba(255, 255, 255, 0.9)",
+                          padding: "6px 14px",
+                          borderRadius: "20px",
+                          fontSize: "12px",
+                          fontWeight: "bold",
+                          color: "#E5710A",
+                          boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
+                        }}
+                      >
+                        {site.state}
                       </div>
                     </div>
-                  ))}
-                </div>
-              ) : null
-              // (
-              //    <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 flex flex-col items-center justify-center text-center h-[300px]">
-              //     <div className="w-16 h-16 bg-orange-50 rounded-full flex items-center justify-center mb-4">
-              //       <Info className="w-8 h-8 text-[#E5710A]" />
-              //     </div>
-              //     <h3 className="text-xl font-semibold text-gray-800 mb-2">
-              //       No Active Projects
-              //     </h3>
-              //     <p className="text-gray-500">
-              //       We currently don't have listed projects in this region.
-              //     </p>
-              //   </div>
-              // )
-            }
+
+                    <div style={{ padding: "24px" }}>
+                      <h3
+                        style={{
+                          margin: "0 0 8px 0",
+                          fontSize: "20px",
+                          fontWeight: "bold",
+                          color: "#374151",
+                        }}
+                      >
+                        {site.name}
+                      </h3>
+                      <div
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          fontSize: "14px",
+                          color: "#6b7280",
+                          marginBottom: "16px",
+                        }}
+                      >
+                        <MapPin
+                          size={16}
+                          style={{ marginRight: "6px", color: "#E5710A" }}
+                        />
+                        {site.location}
+                      </div>
+                      <div
+                        style={{
+                          height: "1px",
+                          backgroundColor: "#f3f4f6",
+                          marginBottom: "16px",
+                        }}
+                      />
+                      <p
+                        style={{
+                          margin: 0,
+                          fontSize: "15px",
+                          color: "#4b5563",
+                          lineHeight: "1.6",
+                        }}
+                      >
+                        {site.description}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
         </div>
       </div>
