@@ -19,6 +19,10 @@ const IndiaMap: React.FC = () => {
     const chart = root.container.children.push(
       am5map.MapChart.new(root, {
         projection: am5map.geoMercator(),
+        // Disable mouse wheel zoom
+        wheelY: "none",
+        // Disable pinch zoom
+        pinchZoom: false,
       }),
     );
 
@@ -33,6 +37,7 @@ const IndiaMap: React.FC = () => {
       }),
     );
 
+    // Define which states should be highlighted and interactive
     const highlightStates = [
       "IN-GJ",
       "IN-MP",
@@ -42,18 +47,36 @@ const IndiaMap: React.FC = () => {
       "IN-TG",
     ];
 
+    // Default settings for all states
     polygonSeries.mapPolygons.template.setAll({
-      interactive: true,
-      tooltipText: "{name}",
-      fill: am5.color(0xd4e2ef), // Default fill
-      stroke: am5.color(0xffffff),
+      interactive: false, // By default, states are not interactive
+      tooltipText: "", // No tooltip by default
+      fill: am5.color(0xd4e2ef), // Default fill color
+      stroke: am5.color(0xffffff), // White border
       strokeWidth: 1,
     });
 
-    polygonSeries.mapPolygons.template.states.create("hover", {
-      fill: am5.color(0x3b729f), // Default hover
+    // Create white labels for all states using bullets
+    polygonSeries.bullets.push(function () {
+      return am5.Bullet.new(root, {
+        sprite: am5.Label.new(root, {
+          text: "{name}",
+          fill: am5.color(0xffffff), // White color for all labels
+          fontSize: 12,
+          fontWeight: "500",
+          centerX: am5.p50,
+          centerY: am5.p50,
+          populateText: true,
+        }),
+      });
     });
 
+    // No default hover state
+    polygonSeries.mapPolygons.template.states.create("hover", {
+      fill: am5.color(0xd4e2ef), // Same as default, so no visible hover effect
+    });
+
+    // Active state (when zoomed)
     polygonSeries.mapPolygons.template.states.create("active", {
       fill: am5.color(0x414a2f),
     });
@@ -62,21 +85,30 @@ const IndiaMap: React.FC = () => {
     polygonSeries.events.on("datavalidated", () => {
       polygonSeries.mapPolygons.each((polygon) => {
         const dataContext = polygon.dataItem?.dataContext as { id: string };
+
+        // Only make highlighted states interactive with special styling
         if (dataContext && highlightStates.includes(dataContext.id)) {
-          polygon.set("fill", am5.color(0xeea462));
+          polygon.setAll({
+            interactive: true, // Enable interaction only for highlighted states
+            tooltipText: "{name}", // Show tooltip only for highlighted states
+            fill: am5.color(0xeea462), // Orange color for highlighted states
+          });
+
+          // Create hover effect only for highlighted states
           polygon.states.create("hover", {
-            fill: am5.color(0xe5710a),
+            fill: am5.color(0xe5710a), // Darker orange on hover
           });
         }
       });
     });
 
-    // Click event: only zoom when a state is clicked
+    // Click event: only zoom when a highlighted state is clicked
     polygonSeries.mapPolygons.template.events.on("click", (ev: any) => {
       const polygon = ev.target;
-      const stateId = polygon.dataItem.dataContext.id as string;
+      const dataContext = polygon.dataItem?.dataContext as { id: string };
 
-      if (highlightStates.includes(stateId)) {
+      // Only zoom if it's a highlighted state
+      if (dataContext && highlightStates.includes(dataContext.id)) {
         chart.zoomToGeoBounds(polygon.dataItem.bbox);
         polygon.setActive(true);
       }
@@ -93,9 +125,10 @@ const IndiaMap: React.FC = () => {
 
     chartRootRef.current.container.children.each((child: any) => {
       if (child instanceof am5map.MapChart) {
-        child.goHome(); // reset zoom
+        child.goHome(); // Reset zoom to initial view
+        // Deactivate all polygons
         child.series.each((series: any) =>
-          series.mapPolygons.each((polygon: any) => polygon.setActive(false)),
+          series.mapPolygons?.each((polygon: any) => polygon.setActive(false)),
         );
       }
     });
