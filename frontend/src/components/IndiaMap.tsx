@@ -21,6 +21,9 @@ const IndiaMap: React.FC = () => {
     const chart = root.container.children.push(
       am5map.MapChart.new(root, {
         projection: am5map.geoMercator(),
+        // Disable dragging initially
+        panX: "none",
+        panY: "none",
         // Disable mouse wheel zoom
         wheelY: "none",
         // Disable pinch zoom
@@ -117,6 +120,10 @@ const IndiaMap: React.FC = () => {
         // Show the back button immediately
         setIsZoomed(true);
 
+        // Enable dragging when zoomed in
+        chart.set("panX", "translateX");
+        chart.set("panY", "translateY");
+
         // Zoom to the state
         polygonSeries.zoomToDataItem(polygon.dataItem!);
 
@@ -138,6 +145,11 @@ const IndiaMap: React.FC = () => {
     chartRootRef.current.container.children.each((child: any) => {
       if (child instanceof am5map.MapChart) {
         child.goHome(); // Reset zoom to initial view
+
+        // Disable dragging when reset
+        child.set("panX", "none");
+        child.set("panY", "none");
+
         // Deactivate all polygons
         child.series.each((series: any) =>
           series.mapPolygons?.each((polygon: any) => polygon.setActive(false)),
