@@ -1,140 +1,149 @@
-import { Mail, Phone, MapPin, Linkedin, Facebook, Twitter } from "lucide-react";
-
+import {
+  Phone,
+  MapPin,
+  Linkedin,
+  Facebook,
+  Instagram,
+  Mail,
+} from "lucide-react";
+import logo from "../assets/Logo/DIMPL_Logo_Long_SVG.svg"; // update path if needed
+import linkedinIcon from "../assets/linkedin.png";
 export function Footer() {
-  const quickLinks = [
-    { name: "About Us", href: "#about" },
-    { name: "Projects", href: "#projects" },
-    { name: "Our Fleet", href: "#fleet" },
-    { name: "Careers", href: "#careers" },
-    { name: "Contact Us", href: "#contact" },
-  ];
-
-  const services = [
-    "HEMM Operations",
-    "Mine Development & Operations",
-    "Conventional Mining",
-    "Value-Added Services",
-  ];
-
   return (
-    <footer className="bg-[#605F5A] text-white">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-          {/* Company Info */}
-          <div>
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 bg-[#E5710A] flex items-center justify-center">
-                <span className="text-white text-2xl font-bold">D</span>
+    <footer className="bg-[#F6F6F6] text-[#1F1F1F]">
+      {/* ================= TOP FOOTER ================= */}
+      <div className="max-w-7xl mx-auto px-4 py-12">
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-10">
+          {/* ===== LOGO + CALL ===== */}
+          <div className="space-y-6">
+            <img
+              src={logo}
+              alt="Company Logo"
+              className="h-14 object-contain"
+            />
+            <div className="flex flex-col gap-2">
+              <div className="flex items-start gap-4">
+                <Phone className="text-[#E77B2E]" size={23} />
+                <div>
+                  <p className="text-md text-[#626162]">Call us</p>
+                  <a
+                    href="tel:02652780707"
+                    className="text-lg font-semibold hover:text-[#E77B2E]"
+                  >
+                    0265-2711633
+                  </a>
+                </div>
               </div>
-              <div>
-                <h3 className="text-xl font-bold">DURGA INFRA</h3>
-                <p className="text-xs opacity-75">PRIVATE LIMITED</p>
+
+              <div className="flex items-start gap-4">
+                <Mail className="text-[#E77B2E]" size={23} />
+                <div>
+                  <p className="text-md text-[#626162]">Email us</p>
+                  <a
+                    href="mailto:info@durgainframining.com"
+                    className="text-lg font-semibold hover:text-[#E77B2E]"
+                  >
+                    info@durgainframining.com
+                  </a>
+                </div>
               </div>
             </div>
-            <p className="text-white/70 text-sm leading-relaxed mb-4">
-              Leading mining and infrastructure company delivering excellence
-              across India since 2015.
-            </p>
+          </div>
+
+          {/* ===== REGISTERED OFFICE ===== */}
+          <div>
+            <h4 className="font-semibold text-xl mb-4 text-[#626162]">
+              Head Office
+            </h4>
+            <div className="flex gap-3">
+              <MapPin className="text-[#E77B2E] mt-1" size={20} />
+              <p className="text-lg text-[#1F1F1F]/70 leading-relaxed">
+                202, 2nd Floor Balram Complex,
+                <br />
+                Station Road,
+                <br />
+                Bhuj, Kutch,
+                <br />
+                Gujarat - 370001
+              </p>
+            </div>
+          </div>
+
+          {/* ===== CORPORATE OFFICE ===== */}
+          <div>
+            <h4 className="font-semibold text-xl mb-4 text-[#626162]">
+              Corporate Office
+            </h4>
+            <div className="flex gap-3">
+              <MapPin className="text-[#E77B2E] mt-1" size={20} />
+              <p className="text-lg text-[#1F1F1F]/70 leading-relaxed">
+                101, M.S.Plaza,
+                <br />
+                Near Abhilasha Cross Road,
+                <br />
+                New Sama Road, Vadodara,
+                <br />
+                Gujarat - 390002
+              </p>
+            </div>
+          </div>
+
+          {/* ===== SOCIAL ===== */}
+          <div>
+            <h4 className="font-semibold text-xl mb-4 text-[#626162]">
+              Follow Us on
+            </h4>
+
             <div className="flex gap-4">
               <a
-                href="#"
-                className="w-10 h-10 bg-white/10 hover:bg-[#E5710A] flex items-center justify-center transition-colors"
+                href="https://www.linkedin.com/company/durga-infra-mining-pvt-ltd"
+                target="_blank"
+                className="w-10 h-10  hover:text-white flex items-center justify-center transition"
               >
-                <Linkedin size={20} />
+                {/* <Linkedin size={18} /> */}
+                <img src={linkedinIcon} alt="linkedin" />
               </a>
+
+              {/* <a
+                href="https://www.facebook.com/"
+                target="_blank"
+                className="w-10 h-10 bg-[#E5E5E5] hover:bg-[#E77B2E] hover:text-white flex items-center justify-center transition"
+              >
+                <Facebook size={18} />
+              </a>
+
               <a
-                href="#"
-                className="w-10 h-10 bg-white/10 hover:bg-[#E5710A] flex items-center justify-center transition-colors"
+                href="https://www.instagram.com/"
+                target="_blank"
+                className="w-10 h-10 bg-[#E5E5E5] hover:bg-[#E77B2E] hover:text-white flex items-center justify-center transition"
               >
-                <Facebook size={20} />
-              </a>
-              <a
-                href="#"
-                className="w-10 h-10 bg-white/10 hover:bg-[#E5710A] flex items-center justify-center transition-colors"
-              >
-                <Twitter size={20} />
-              </a>
+                <Instagram size={18} />
+              </a> */}
             </div>
-          </div>
-
-          {/* Quick Links */}
-          <div>
-            <h4 className="font-bold mb-6 text-lg">Quick Links</h4>
-            <ul className="space-y-3">
-              {quickLinks.map((link, index) => (
-                <li key={index}>
-                  <a
-                    href={link.href}
-                    className="text-white/70 hover:text-[#E5710A] transition-colors text-sm"
-                  >
-                    {link.name}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Services */}
-          <div>
-            <h4 className="font-bold mb-6 text-lg">Our Services</h4>
-            <ul className="space-y-3">
-              {services.map((service, index) => (
-                <li key={index} className="text-white/70 text-sm">
-                  {service}
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Contact Info */}
-          <div>
-            <h4 className="font-bold mb-6 text-lg">Contact Us</h4>
-            <ul className="space-y-4">
-              <li className="flex items-start gap-3">
-                <MapPin
-                  className="text-[#E5710A] flex-shrink-0 mt-1"
-                  size={18}
-                />
-                <span className="text-white/70 text-sm">
-                  Corporate Office
-                  <br />
-                  Hyderabad, Telangana, India
-                </span>
-              </li>
-              <li className="flex items-center gap-3">
-                <Phone className="text-[#E5710A] flex-shrink-0" size={18} />
-                <span className="text-white/70 text-sm">+91 XXXX XXXXXX</span>
-              </li>
-              <li className="flex items-center gap-3">
-                <Mail className="text-[#E5710A] flex-shrink-0" size={18} />
-                <span className="text-white/70 text-sm">
-                  info@durgainfra.com
-                </span>
-              </li>
-            </ul>
           </div>
         </div>
+      </div>
 
-        {/* Bottom Bar */}
-        <div className="border-t border-white/10 pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-white/60 text-sm text-center md:text-left">
-              © 2026 Durga Infra Private Limited. All rights reserved.
-            </p>
-            <div className="flex gap-6 text-sm">
-              <a
-                href="#"
-                className="text-white/60 hover:text-[#E5710A] transition-colors"
-              >
-                Privacy Policy
-              </a>
-              <a
-                href="#"
-                className="text-white/60 hover:text-[#E5710A] transition-colors"
-              >
-                Terms of Service
-              </a>
-            </div>
+      {/* ================= BOTTOM BAR ================= */}
+      <div className="border-t border-[#E5E5E5] py-4">
+        <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-3 text-sm">
+          <p className="text-[#1F1F1F]/60 text-center md:text-left">
+            ©2026 <b>Durga Infra Mining Pvt. Ltd.</b> All rights reserved.
+          </p>
+
+          <div className="flex items-center gap-2 text-[#1F1F1F]/60">
+            <span>Design By</span>
+            <a
+              href="https://www.linkedin.com/in/tapasvi-chhabhaiya/"
+              target="_blank"
+            >
+              {/* <img
+                src="/sna-logo.svg"
+                alt="Design By"
+                className="h-4 object-contain"
+              /> */}
+              CHHABHAIYA
+            </a>
           </div>
         </div>
       </div>

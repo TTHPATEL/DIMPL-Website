@@ -1,7 +1,5 @@
-import mine1 from "../assets/Mines/mine1.jpg";
 import mine2 from "../assets/Mines/mine2.png";
 import TL1 from "../assets/Mines/TL1.png";
-import TL2 from "../assets/Mines/TL2.png";
 import CT from "../assets/Mines/CT.png";
 import MP from "../assets/Mines/MP.png";
 import OD from "../assets/Mines/OD.png";

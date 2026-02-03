@@ -1,15 +1,4 @@
-import React from "react";
-import {
-  TrendingUp,
-  Users,
-  Truck,
-  Mountain,
-  Factory,
-  MapPin,
-  DollarSign,
-  Briefcase,
-  Award,
-} from "lucide-react";
+import { Users, Truck, Mountain, Factory, MapPin, Award } from "lucide-react";
 
 export function PerformanceStatsPremium() {
   const stats = [
@@ -95,7 +84,7 @@ export function PerformanceStatsPremium() {
               >
                 <div className="flex items-start gap-4">
                   {/* Icon */}
-                  <div className="flex-shrink-0 w-12 h-12 bg-[#E77B2E]/10 rounded-lg flex items-center justify-center group-hover:bg-[#E77B2E] transition-colors duration-300">
+                  <div className="shrink-0 w-12 h-12 bg-[#E77B2E]/10 rounded-lg flex items-center justify-center group-hover:bg-[#E77B2E] transition-colors duration-300">
                     <Icon
                       size={24}
                       className="text-[#E77B2E] group-hover:text-white transition-colors duration-300"
@@ -105,7 +94,7 @@ export function PerformanceStatsPremium() {
 
                   {/* Content */}
                   <div className="flex-1">
-                    <h3 className="text-3xl font-bold text-[#1F1F1F] mb-1 leading-none">
+                    <h3 className="text-3xl font-semibold text-[#1F1F1F] mb-1 leading-none">
                       {stat.value}
                     </h3>
                     <p className="text-[#626162] font-semibold text-lg mb-1">
