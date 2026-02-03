@@ -1,3 +1,6 @@
+import mine1 from "../assets/Mines/mine1.jpg";
+import mine2 from "../assets/Mines/mine2.png";
+
 export interface Site {
   id: string;
   name: string;
@@ -60,8 +63,7 @@ export const LOCATION_DATA: Record<string, Site[]> = {
       state: "Telangana",
       description:
         "Part of the expansive Manuguru mining area, known for its high-quality output and safety standards.",
-      image:
-        "https://images.unsplash.com/photo-1616110935147-38d507b949c8?q=80&w=800&auto=format&fit=crop",
+      image: mine1,
     },
     {
       id: "tel-2",
@@ -70,8 +72,7 @@ export const LOCATION_DATA: Record<string, Site[]> = {
       state: "Telangana",
       description:
         "Another critical section of the PK Opencast mine, supporting the robust coal requirements of the state.",
-      image:
-        "https://images.unsplash.com/photo-1595246140625-573b715d1128?q=80&w=800&auto=format&fit=crop",
+      image: mine2,
     },
   ],
   INCT: [
