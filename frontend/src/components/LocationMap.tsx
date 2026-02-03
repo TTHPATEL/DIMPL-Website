@@ -1,7 +1,15 @@
 import { useState, useRef } from "react";
 import { LOCATION_DATA } from "../data/SiteData";
 import type { Site } from "../data/SiteData";
-import { MapPin, Info, ChevronRight, ChevronLeft } from "lucide-react";
+import {
+  MapPin,
+  ChevronRight,
+  ChevronLeft,
+  Calendar,
+  TrendingUp,
+  Hammer,
+  Package,
+} from "lucide-react";
 import IndiaMap from "./IndiaMap";
 
 declare global {
@@ -63,12 +71,12 @@ export function LocationMap() {
     >
       <div className="max-w-7xl mx-auto flex flex-col w-full z-20 px-4">
         {/* HEADER */}
-        <div className="text-center z-20 mb-0">
-          <h2 className="text-4xl md:text-5xl font-bold text-[#605F5A] mb-4">
+        <div className="text-center z-20 mb-8">
+          <h2 className="text-4xl md:text-5xl font-bold text-[#626162] mb-4">
             Our Presence Across India
           </h2>
-          <div className="w-24 h-1 bg-[#E5710A] mx-auto mb-4" />
-          <p className="text-[#605F5A]/80 max-w-2xl mx-auto">
+          <div className="w-24 h-1 bg-[#E77B2E] mx-auto mb-4" />
+          <p className="text-[#1F1F1F]/70 max-w-2xl mx-auto text-lg">
             Active mining operations across India
           </p>
         </div>
@@ -83,24 +91,24 @@ export function LocationMap() {
             {!selectedState ? (
               <div
                 style={{
-                  backgroundColor: "white",
-                  borderRadius: "24px",
+                  backgroundColor: "#FFFFFF",
+                  borderRadius: "16px",
                   padding: "48px",
-                  boxShadow: "0 4px 20px rgba(0,0,0,0.05)",
-                  border: "1px solid #f0f0f0",
+                  boxShadow: "0 2px 12px rgba(0,0,0,0.06)",
+                  border: "1px solid #E5E5E5",
                   display: "flex",
                   flexDirection: "column",
                   alignItems: "center",
                   justifyContent: "center",
                   textAlign: "center",
-                  height: "600px",
+                  minHeight: "500px",
                 }}
               >
                 <div
                   style={{
-                    width: "80px",
-                    height: "80px",
-                    backgroundColor: "#f9fafb",
+                    width: "72px",
+                    height: "72px",
+                    backgroundColor: "#F6F6F6",
                     borderRadius: "50%",
                     display: "flex",
                     alignItems: "center",
@@ -108,37 +116,39 @@ export function LocationMap() {
                     marginBottom: "24px",
                   }}
                 >
-                  <MapPin size={40} color="#E5710A" />
+                  <MapPin size={36} color="#E77B2E" strokeWidth={2} />
                 </div>
                 <h3
                   style={{
-                    fontSize: "24px",
-                    fontWeight: "bold",
-                    color: "#374151",
-                    marginBottom: "16px",
+                    fontSize: "22px",
+                    fontWeight: "700",
+                    color: "#626162",
+                    marginBottom: "12px",
                   }}
                 >
-                  Explore Our Locations
+                  Explore Our Mining Sites
                 </h3>
                 <p
                   style={{
-                    color: "#6b7280",
-                    maxWidth: "320px",
+                    color: "#1F1F1F",
+                    opacity: 0.6,
+                    maxWidth: "340px",
                     lineHeight: "1.6",
+                    fontSize: "15px",
                   }}
                 >
-                  Click on a highlighted state in the map to view detailed
-                  information about our mining projects and sites.
+                  Select a state on the map to view detailed information about
+                  our ongoing projects and mining operations.
                 </p>
               </div>
             ) : (
-              <div className="flex flex-col gap-4">
-                <div className="flex justify-between items-center mb-2 px-2">
-                  <h3 className="text-2xl font-bold text-[#374151]">
+              <div className="flex flex-col gap-5">
+                <div className="flex justify-between items-center px-2">
+                  <h3 className="text-2xl font-bold text-[#626162]">
                     {selectedSites[0]?.state}
                   </h3>
                   <div className="flex items-center gap-2">
-                    <span className="bg-[#E5710A]/10 text-[#E5710A] px-3 py-1 rounded-full text-sm font-bold border border-[#E5710A]/20">
+                    <span className="bg-[#E77B2E]/10 text-[#E77B2E] px-4 py-1.5 rounded-full text-sm font-bold border border-[#E77B2E]/20">
                       {selectedSites.length}{" "}
                       {selectedSites.length === 1 ? "Site" : "Sites"}
                     </span>
@@ -148,7 +158,7 @@ export function LocationMap() {
                 <div style={{ position: "relative" }}>
                   <div
                     ref={scrollRef}
-                    className="flex gap-6 overflow-x-auto pb-6 hide-scrollbar"
+                    className="flex gap-5 overflow-x-auto pb-4 hide-scrollbar"
                     style={{
                       scrollSnapType: "x mandatory",
                       maxWidth: "100%",
@@ -160,20 +170,21 @@ export function LocationMap() {
                       <div
                         key={site.id}
                         style={{
-                          backgroundColor: "white",
-                          borderRadius: "20px",
+                          backgroundColor: "#FFFFFF",
+                          borderRadius: "12px",
                           overflow: "hidden",
-                          boxShadow: "0 10px 40px rgba(0,0,0,0.08)",
-                          border: "1px solid #eee",
+                          boxShadow: "0 2px 16px rgba(0,0,0,0.08)",
+                          border: "1px solid #E5E5E5",
                           flexShrink: 0,
                           width: "100%",
                           scrollSnapAlign: "start",
                         }}
                       >
+                        {/* Image Section */}
                         <div
                           style={{
                             position: "relative",
-                            height: "240px",
+                            height: "180px",
                             overflow: "hidden",
                           }}
                         >
@@ -186,85 +197,311 @@ export function LocationMap() {
                               objectFit: "cover",
                             }}
                           />
-                          <div
+                          {/* SITE Badge - Moved to LEFT */}
+                          {/* <div
                             style={{
                               position: "absolute",
-                              top: "16px",
-                              right: "16px",
-                              backgroundColor: "#374151",
-                              padding: "6px 16px",
-                              borderRadius: "20px",
+                              top: "12px",
+                              left: "12px",
+                              backgroundColor: "#626162",
+                              padding: "7px 18px",
+                              borderRadius: "6px",
                               fontSize: "11px",
                               fontWeight: "800",
-                              letterSpacing: "1px",
-                              color: "white",
+                              letterSpacing: "0.8px",
+                              color: "#FFFFFF",
                               zIndex: 1,
-                              boxShadow: "0 4px 12px rgba(0,0,0,0.2)",
                             }}
                           >
                             SITE {toRoman(index + 1)}
-                          </div>
-                          <div
-                            style={{
-                              position: "absolute",
-                              bottom: "16px",
-                              left: "16px",
-                              backgroundColor: "rgba(255, 255, 255, 0.95)",
-                              padding: "6px 14px",
-                              borderRadius: "20px",
-                              fontSize: "12px",
-                              fontWeight: "bold",
-                              color: "#E5710A",
-                              boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
-                            }}
-                          >
-                            Mining Operation
-                          </div>
+                          </div> */}
                         </div>
 
-                        <div style={{ padding: "24px" }}>
+                        {/* Content Section */}
+                        <div style={{ padding: "22px", position: "relative" }}>
+                          {selectedSites.length > 1 && (
+                            <div
+                              style={{
+                                position: "absolute",
+                                margin: "0 0 8px 0",
+                                right: "12px",
+                                backgroundColor: "#dc7124e4",
+                                padding: "7px 18px",
+                                borderRadius: "6px",
+                                fontSize: "11px",
+                                fontWeight: "800",
+                                letterSpacing: "0.8px",
+                                color: "#FFFFFF",
+                                zIndex: 1,
+                              }}
+                            >
+                              SITE {toRoman(index + 1)}
+                            </div>
+                          )}
                           <h3
                             style={{
                               margin: "0 0 8px 0",
-                              fontSize: "22px",
-                              fontWeight: "bold",
-                              color: "#374151",
+                              fontSize: "20px",
+                              fontWeight: "700",
+                              color: "#626162",
+                              lineHeight: "1.3",
                             }}
                           >
                             {site.name}
                           </h3>
+
                           <div
                             style={{
                               display: "flex",
                               alignItems: "center",
                               fontSize: "14px",
-                              color: "#6b7280",
-                              marginBottom: "16px",
+                              color: "#1F1F1F",
+                              opacity: 0.6,
+                              marginBottom: "14px",
                             }}
                           >
                             <MapPin
-                              size={16}
-                              style={{ marginRight: "6px", color: "#E5710A" }}
+                              size={15}
+                              style={{ marginRight: "6px", color: "#E77B2E" }}
                             />
                             {site.location}
                           </div>
+
+                          {/* Client Name - Increased Height */}
                           <div
                             style={{
-                              height: "1px",
-                              backgroundColor: "#f3f4f6",
+                              backgroundColor: "#F6F6F6",
+                              borderRadius: "10px",
+                              padding: "14px 16px",
                               marginBottom: "16px",
-                            }}
-                          />
-                          <p
-                            style={{
-                              margin: 0,
-                              fontSize: "15px",
-                              color: "#4b5563",
-                              lineHeight: "1.7",
+                              borderLeft: "3px solid #E77B2E",
                             }}
                           >
-                            {site.description}
-                          </p>
+                            <p
+                              style={{
+                                fontSize: "12px",
+                                fontWeight: "700",
+                                color: "#626162",
+                                letterSpacing: "0.5px",
+                                marginBottom: "6px",
+                                textTransform: "uppercase",
+                              }}
+                            >
+                              Client
+                            </p>
+                            <p
+                              style={{
+                                fontSize: "15px",
+                                fontWeight: "600",
+                                color: "#1F1F1F",
+                                margin: 0,
+                                lineHeight: "1.4",
+                              }}
+                            >
+                              {site.clientName}
+                            </p>
+                          </div>
+
+                          {/* Key Metrics - 2x2 Grid with Increased Height & Font */}
+                          <div
+                            style={{
+                              display: "grid",
+                              gridTemplateColumns: "1fr 1fr",
+                              gap: "10px",
+                            }}
+                          >
+                            {/* Duration */}
+                            <div
+                              style={{
+                                backgroundColor: "#F6F6F6",
+                                borderRadius: "10px",
+                                padding: "14px 12px",
+                                border: "1px solid #E5E5E5",
+                              }}
+                            >
+                              <div
+                                style={{
+                                  display: "flex",
+                                  alignItems: "center",
+                                  marginBottom: "6px",
+                                }}
+                              >
+                                <Calendar
+                                  size={14}
+                                  style={{
+                                    color: "#E77B2E",
+                                    marginRight: "5px",
+                                  }}
+                                />
+                                <p
+                                  style={{
+                                    fontSize: "12px",
+                                    fontWeight: "700",
+                                    color: "#626162",
+                                    letterSpacing: "0.4px",
+                                    margin: 0,
+                                    textTransform: "uppercase",
+                                  }}
+                                >
+                                  Duration
+                                </p>
+                              </div>
+                              <p
+                                style={{
+                                  fontSize: "16px",
+                                  fontWeight: "700",
+                                  color: "#1F1F1F",
+                                  margin: 0,
+                                }}
+                              >
+                                {site.duration}
+                              </p>
+                            </div>
+
+                            {/* Project Value */}
+                            <div
+                              style={{
+                                backgroundColor: "#F6F6F6",
+                                borderRadius: "10px",
+                                padding: "14px 12px",
+                                border: "1px solid #E5E5E5",
+                              }}
+                            >
+                              <div
+                                style={{
+                                  display: "flex",
+                                  alignItems: "center",
+                                  marginBottom: "6px",
+                                }}
+                              >
+                                <TrendingUp
+                                  size={14}
+                                  style={{
+                                    color: "#E77B2E",
+                                    marginRight: "5px",
+                                  }}
+                                />
+                                <p
+                                  style={{
+                                    fontSize: "12px",
+                                    fontWeight: "700",
+                                    color: "#626162",
+                                    letterSpacing: "0.4px",
+                                    margin: 0,
+                                    textTransform: "uppercase",
+                                  }}
+                                >
+                                  Value
+                                </p>
+                              </div>
+                              <p
+                                style={{
+                                  fontSize: "16px",
+                                  fontWeight: "700",
+                                  color: "#1F1F1F",
+                                  margin: 0,
+                                }}
+                              >
+                                ₹{site.projectValue} Cr
+                              </p>
+                            </div>
+
+                            {/* OB Work */}
+                            <div
+                              style={{
+                                backgroundColor: "#F6F6F6",
+                                borderRadius: "10px",
+                                padding: "14px 12px",
+                                border: "1px solid #E5E5E5",
+                              }}
+                            >
+                              <div
+                                style={{
+                                  display: "flex",
+                                  alignItems: "center",
+                                  marginBottom: "6px",
+                                }}
+                              >
+                                <Hammer
+                                  size={14}
+                                  style={{
+                                    color: "#E77B2E",
+                                    marginRight: "5px",
+                                  }}
+                                />
+                                <p
+                                  style={{
+                                    fontSize: "12px",
+                                    fontWeight: "700",
+                                    color: "#626162",
+                                    letterSpacing: "0.4px",
+                                    margin: 0,
+                                    textTransform: "uppercase",
+                                  }}
+                                >
+                                  OB Work
+                                </p>
+                              </div>
+                              <p
+                                style={{
+                                  fontSize: "16px",
+                                  fontWeight: "700",
+                                  color: "#1F1F1F",
+                                  margin: 0,
+                                }}
+                              >
+                                {site.OB_work} L m³
+                              </p>
+                            </div>
+
+                            {/* Coal Work */}
+                            <div
+                              style={{
+                                backgroundColor: "#F6F6F6",
+                                borderRadius: "10px",
+                                padding: "14px 12px",
+                                border: "1px solid #E5E5E5",
+                              }}
+                            >
+                              <div
+                                style={{
+                                  display: "flex",
+                                  alignItems: "center",
+                                  marginBottom: "6px",
+                                }}
+                              >
+                                <Package
+                                  size={14}
+                                  style={{
+                                    color: "#E77B2E",
+                                    marginRight: "5px",
+                                  }}
+                                />
+                                <p
+                                  style={{
+                                    fontSize: "12px",
+                                    fontWeight: "700",
+                                    color: "#626162",
+                                    letterSpacing: "0.4px",
+                                    margin: 0,
+                                    textTransform: "uppercase",
+                                  }}
+                                >
+                                  Coal Work
+                                </p>
+                              </div>
+                              <p
+                                style={{
+                                  fontSize: "16px",
+                                  fontWeight: "700",
+                                  color: "#1F1F1F",
+                                  margin: 0,
+                                }}
+                              >
+                                {site.Coal_work} L MT
+                              </p>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     ))}
@@ -279,23 +516,23 @@ export function LocationMap() {
                           left: "-20px",
                           top: "50%",
                           transform: "translateY(-50%)",
-                          backgroundColor: "white",
-                          border: "1px solid #eee",
+                          backgroundColor: "#FFFFFF",
+                          border: "2px solid #E5E5E5",
                           borderRadius: "50%",
-                          width: "44px",
-                          height: "44px",
+                          width: "40px",
+                          height: "40px",
                           display: "flex",
                           alignItems: "center",
                           justifyContent: "center",
-                          boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+                          boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
                           cursor: "pointer",
                           zIndex: 10,
-                          color: "#E5710A",
+                          color: "#E77B2E",
                           transition: "all 0.2s ease",
                         }}
-                        className="hover:scale-110 active:scale-95"
+                        className="hover:bg-[#E77B2E] hover:text-white hover:border-[#E77B2E]"
                       >
-                        <ChevronLeft size={24} />
+                        <ChevronLeft size={22} strokeWidth={3} />
                       </button>
                       <button
                         onClick={() => scroll("right")}
@@ -304,33 +541,33 @@ export function LocationMap() {
                           right: "-20px",
                           top: "50%",
                           transform: "translateY(-50%)",
-                          backgroundColor: "white",
-                          border: "1px solid #eee",
+                          backgroundColor: "#FFFFFF",
+                          border: "2px solid #E5E5E5",
                           borderRadius: "50%",
-                          width: "44px",
-                          height: "44px",
+                          width: "40px",
+                          height: "40px",
                           display: "flex",
                           alignItems: "center",
                           justifyContent: "center",
-                          boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+                          boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
                           cursor: "pointer",
                           zIndex: 10,
-                          color: "#E5710A",
+                          color: "#E77B2E",
                           transition: "all 0.2s ease",
                         }}
-                        className="hover:scale-110 active:scale-95"
+                        className="hover:bg-[#E77B2E] hover:text-white hover:border-[#E77B2E]"
                       >
-                        <ChevronRight size={24} />
+                        <ChevronRight size={22} strokeWidth={3} />
                       </button>
                     </>
                   )}
                 </div>
 
                 {selectedSites.length > 1 && (
-                  <div className="flex items-center justify-center gap-2 text-sm text-[#6b7280] font-medium">
-                    <span className="w-12 h-px bg-gray-200" />
-                    <span>Swipe or click to browse</span>
-                    <span className="w-12 h-px bg-gray-200" />
+                  <div className="flex items-center justify-center gap-2 text-xs text-[#1F1F1F]/50 font-medium mt-2">
+                    <span className="w-8 h-px bg-[#E5E5E5]" />
+                    <span>Scroll to view more</span>
+                    <span className="w-8 h-px bg-[#E5E5E5]" />
                   </div>
                 )}
               </div>
@@ -341,6 +578,14 @@ export function LocationMap() {
       <style>{`
         .hide-scrollbar::-webkit-scrollbar {
           display: none;
+        }
+        
+        button:hover {
+          transform: scale(1.05);
+        }
+        
+        button:active {
+          transform: scale(0.95);
         }
       `}</style>
     </section>
