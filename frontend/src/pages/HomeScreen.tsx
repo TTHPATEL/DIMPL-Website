@@ -1,5 +1,5 @@
 import { Hero } from "../components/Hero";
-import { Services } from "../components/Services";
+// import { Services } from "../components/Services";
 // import { Statistics } from "../components/Statistics";
 // import { Projects } from "../components/Projects";
 import { LocationMap } from "../components/LocationMap";

@@ -2,7 +2,6 @@ import { useState } from "react";
 import { ArrowRight } from "lucide-react";
 import dig from "../assets/History Photo/Dig.jpg";
 import thermal2 from "../assets/History Photo/Thermal2.jpg";
-import thermal3 from "../assets/History Photo/Thermal3.jpg";
 import od from "../assets/Mines/GJ.png";
 import TL2 from "../assets/Mines/TL2.png";
 
