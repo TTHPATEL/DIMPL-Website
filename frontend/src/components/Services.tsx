@@ -29,7 +29,7 @@ export function Services() {
   ];
 
   return (
-    <section id="about" className="py-20 bg-[#F6F6F6]">
+    <section id="service" className="py-20 bg-[#F6F6F6]">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-[#605F5A] mb-4">

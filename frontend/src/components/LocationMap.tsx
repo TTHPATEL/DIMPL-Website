@@ -67,7 +67,7 @@ export function LocationMap() {
 
   return (
     <section
-      id="location"
+      id="projects"
       className="relative min-h-screen bg-[#F6F6F6] flex flex-col py-20"
     >
       <div className="max-w-7xl mx-auto flex flex-col w-full z-20 px-4">

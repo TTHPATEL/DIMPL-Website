@@ -8,14 +8,17 @@ import { Clients } from "../components/Clients";
 import { Footer } from "../components/Footer";
 import { FleetSlide } from "../components/FleetSlide";
 import { PerformanceStatsPremium } from "../components/PerformanceStatsPremium";
+import { AboutUs } from "../components/AboutUs";
+import "../index.css";
 const HomeScreen = () => {
   return (
     <div className="bg-white">
       <main>
         <Hero />
         <Services />
-        <FleetSlide />
+        <AboutUs />
         <LocationMap />
+        <FleetSlide />
         <PerformanceStatsPremium />
         <Clients />
       </main>
