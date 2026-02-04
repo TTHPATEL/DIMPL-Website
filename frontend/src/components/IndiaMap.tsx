@@ -1,10 +1,13 @@
 import React, { useLayoutEffect, useRef, useState } from "react";
-import { ZoomOut, MapPin, X } from "lucide-react";
+import { ZoomOut } from "lucide-react";
+// import { MapPin } from "lucide-react";
+// import { X } from "lucide-react";
+
 import * as am5 from "@amcharts/amcharts5";
 import * as am5map from "@amcharts/amcharts5/map";
 import am5geodata_indiaLow from "@amcharts/amcharts5-geodata/indiaLow";
 import am5themes_Animated from "@amcharts/amcharts5/themes/Animated";
-import { LOCATION_DATA } from "../data/SiteData";
+// import { LOCATION_DATA } from "../data/SiteData";
 
 interface IndiaMapProps {
   onStateSelect?: (stateId: string | null) => void;
@@ -14,7 +17,7 @@ const IndiaMap: React.FC<IndiaMapProps> = ({ onStateSelect }) => {
   const chartRef = useRef<HTMLDivElement>(null);
   const chartRootRef = useRef<am5.Root | null>(null);
   const [isZoomed, setIsZoomed] = useState(false);
-  const [selectedStateId, setSelectedStateId] = useState<string | null>(null);
+  const [_selectedStateId, setSelectedStateId] = useState<string | null>(null);
 
   useLayoutEffect(() => {
     if (!chartRef.current) return;

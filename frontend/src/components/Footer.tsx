@@ -1,11 +1,4 @@
-import {
-  Phone,
-  MapPin,
-  Linkedin,
-  Facebook,
-  Instagram,
-  Mail,
-} from "lucide-react";
+import { Phone, MapPin, Mail } from "lucide-react";
 import logo from "../assets/Logo/DIMPL_Logo_Long_SVG.svg"; // update path if needed
 import linkedinIcon from "../assets/linkedin.png";
 export function Footer() {
