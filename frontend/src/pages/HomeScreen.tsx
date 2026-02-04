@@ -15,8 +15,8 @@ const HomeScreen = () => {
     <div className="bg-white">
       <main>
         <Hero />
-        <Services />
         <AboutUs />
+        {/* <Services /> */}
         <LocationMap />
         <FleetSlide />
         <PerformanceStatsPremium />

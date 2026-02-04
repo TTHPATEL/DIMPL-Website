@@ -1,72 +1,72 @@
 import { useState } from "react";
 import { ArrowRight } from "lucide-react";
+import dig from "../assets/History Photo/Dig.jpg";
+import thermal2 from "../assets/History Photo/Thermal2.jpg";
+import thermal3 from "../assets/History Photo/Thermal3.jpg";
+import od from "../assets/Mines/GJ.png";
+import TL2 from "../assets/Mines/TL2.png";
 
 export function AboutUs() {
   const milestones = [
     {
       id: 1,
       year: "1994",
-      location: "BHUJ-KUTCH, GUJARAT",
+      // location: "BHUJ-KUTCH, GUJARAT",
       title: "Foundation as Durga Construction Co.",
       description:
-        "Durga Construction Co. was established as a partnership firm with a small set of earthwork equipment, including one Tata-Hitachi-083 excavator and 4–5 dumpers. The company began its journey as a sub-contractor, focusing on basic earthwork activities.",
-      image:
-        "https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=1200&q=80",
+        "Durga Construction Co. was established as a partnership firm with a small set of earthwork equipment, including one Tata Hitachi-083 excavator and 4-5 dumpers. The company began its journey as a sub contractor, focusing on basic earthwork activities.",
+      image: dig,
     },
     {
       id: 2,
       year: "2000–2010",
-      location: "MULTI-STATE OPERATIONS",
+      // location: "MULTI-STATE OPERATIONS",
       title: "Steady Growth and Experience",
       description:
         "With growing experience, the firm executed earthwork projects for roads, dams, canals, and thermal power stations. This period marked steady expansion in capability, manpower, and execution of increasingly complex works.",
-      image:
-        "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=80",
+      image: thermal2,
     },
     {
       id: 3,
       year: "2010–2017",
-      location: "RAJASTHAN & TELANGANA",
-      title: "Entry into Large-Scale Mining",
+      // location: "RAJASTHAN & TELANGANA",
+      title: "Entry into Large Scale Mining",
       description:
         "The company evolved into a main contractor for State and Central Government projects. Major mining assignments were completed for GMDC, SCCL, and RSMM, establishing a strong presence in coal and lignite mining.",
-      image:
-        "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=1200&q=80",
+      image: od,
     },
     {
       id: 4,
       year: "2018–2019",
-      location: "MAHARASHTRA & TELANGANA",
+      // location: "MAHARASHTRA & TELANGANA",
       title: "Handling Complex Geological Conditions",
       description:
         "Projects were executed under challenging site conditions involving hard rock, unstable benches, and long lead and lift requirements. These works strengthened the company’s operational and technical capabilities.",
-      image:
-        "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=1200&q=80",
+      image: TL2,
     },
     {
       id: 5,
       year: "2020",
-      location: "PAN-INDIA",
+      // location: "PAN-INDIA",
       title: "Transition to Corporate Entity",
       description:
         "On 09/09/2020, the partnership firm was converted into Durga Infra Mining Private Limited. This transition marked a new phase of structured growth, governance, and nationwide operations.",
-      image:
-        "https://images.unsplash.com/photo-1625525701226-fdef2d034d36?w=1200&q=80",
+      image: TL2,
     },
     {
       id: 6,
       year: "2021–2024",
-      location: "GUJARAT & RAJASTHAN",
+      // location: "GUJARAT & RAJASTHAN",
       title: "Major Mining Achievements",
       description:
         "At GMDC Rajpardi, extensive dewatering of nearly 50,000 cubic meters per day enabled lignite extraction under heavy water ingress. At Tadkeshwar, overburden removal of about 1 lakh cubic meters per day was achieved despite sliding strata.",
       image:
-        "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=1200&q=80",
+        "https://images.unsplash.com/photo-1581092918484-8cf2c4a5c6d4?w=1200&q=80",
     },
     {
       id: 7,
       year: "2025",
-      location: "NATIONWIDE PRESENCE",
+      // location: "NATIONWIDE PRESENCE",
       title: "Established National Footprint",
       description:
         "DIMPL operates multiple large mining projects across India with a strong fleet of equipment and a skilled workforce. The company continues to deliver consistent performance across diverse geological and operational conditions.",
@@ -81,30 +81,39 @@ export function AboutUs() {
 
   return (
     <section id="about" className="min-h-screen py-20 bg-white">
+      <div className="text-center mb-16">
+        <h2 className="text-4xl md:text-5xl font-bold text-[#605F5A] mb-4">
+          Creating a Lasting <span className="text-[#E5710A]">Legacy</span>
+        </h2>
+        <div className="w-24 h-1 bg-[#E5710A] mx-auto mb-6"></div>
+        <p className="text-lg text-[#605F5A]/80 max-w-3xl mx-auto">
+          Built on strength and reliability
+        </p>
+      </div>
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col lg:flex-row gap-8 items-start">
+        <div className="flex flex-col lg:flex-row gap-19 items-start">
           {/* Left Column */}
-          <div className="lg:w-1/3 pt-12">
-            <div className="space-y-4 mb-10">
+          <div className="lg:w-1/3">
+            {/* <div className="space-y-4 mb-10">
               <h2 className="text-4xl md:text-5xl font-extrabold text-[#605F5A] leading-tight">
                 Creating a Lasting
                 <span className="block text-[#E5710A]">Legacy</span>
               </h2>
               <div className="w-16 h-1 bg-[#E5710A]"></div>
-            </div>
-            <div className="space-y-6 text-base text-[#605F5A]/80 leading-relaxed">
+            </div> */}
+            <div className="text-lg text-justify text-[#605F5A]/80 leading-relaxed">
               <p>
                 <strong className="text-[#605F5A]">
                   Durga Infra Mining Private Limited (DIMPL)
                 </strong>{" "}
-                is a leading mining contractor engaged in comprehensive mine
+                is a leading mining company engaged in comprehensive mine
                 development and operations across India. The company specializes
                 in overburden removal and coal and lignite extraction, supported
                 by modern equipment and two decades of hands-on industry
                 experience.
               </p>
 
-              <p>
+              <p className="pt-4">
                 Over the years, DIMPL has executed a wide range of
                 infrastructure and mining projects including roads, dams,
                 canals, and thermal power stations, and focuses on large-scale
@@ -112,7 +121,7 @@ export function AboutUs() {
                 production under complex geological and site conditions.
               </p>
 
-              <p className="text-[#E5710A] font-semibold italic">
+              <p className="text-[#E5710A] font-semibold italic pt-4">
                 Focused on coal and lignite mining with proven experience across
                 diverse projects.
               </p>
@@ -188,7 +197,7 @@ export function AboutUs() {
                             : "text-gray-400 hover:bg-[#E5710A]/10"
                         }`}
                       >
-                        <span className="text-sm font-bold">{m.year}</span>
+                        <span className="text-md font-bold">{m.year}</span>
                       </div>
                     </div>
                   );
@@ -202,10 +211,9 @@ export function AboutUs() {
                   className="absolute inset-0 w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
-
                 <div className="absolute inset-0 p-12 flex flex-col justify-end">
                   <span className="text-[#F1C40F] font-bold text-sm uppercase">
-                    {activeMilestone.location}
+                    {/* {activeMilestone.location} */}
                   </span>
                   <h3 className="text-4xl font-bold text-white mt-2">
                     {activeMilestone.title}
@@ -215,7 +223,7 @@ export function AboutUs() {
                   </p>
                 </div>
 
-                <div className="absolute top-0 right-0 w-1.5 h-full bg-white/10">
+                <div className="absolute top-0 left-0 w-1.5 h-full bg-white/10">
                   <div
                     className="w-full bg-[#E5710A]"
                     style={{ height: `${progressHeight}%` }}
