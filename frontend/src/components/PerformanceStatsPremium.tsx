@@ -1,61 +1,53 @@
 import { Users, Truck, Mountain, Factory, MapPin, Award } from "lucide-react";
+import CountUp from "./ui/CountUp";
 
 export function PerformanceStatsPremium() {
   const stats = [
     {
       icon: Award,
-      value: "30+",
+      value: 30,
+      suffix: "+",
       label: "Years of Expertise",
       description: "Proven mining & infrastructure",
     },
     {
       icon: Users,
-      value: "4,000+",
+      value: 4000,
+      suffix: "+",
       label: "Workforce",
       description: "On-ground professionals",
+      separator: ",",
     },
     {
       icon: Truck,
-      value: "1,100+",
+      value: 1100,
+      suffix: "+",
       label: "Equipment Fleet",
       description: "Heavy machinery in service",
+      separator: ",",
     },
     {
       icon: Mountain,
-      value: "11,700+",
+      value: 11700,
+      suffix: "+",
       label: "LBCM Overburden",
       description: "Total awarded quantity",
+      separator: ",",
     },
     {
       icon: Factory,
-      value: "13+ Million",
+      value: 13,
+      suffix: "+ Million",
       label: "MT/Year Capacity",
       description: "Mineral production",
     },
     {
       icon: MapPin,
-      value: "10+",
+      value: 10,
+      suffix: "+",
       label: "Indian States",
       description: "Active & completed projects",
     },
-    // {
-    //   icon: DollarSign,
-    //   value: "₹86,000+ Cr",
-    //   label: "Contract Value",
-    //   description: "Cumulative projects handled",
-    // },
-    // {
-    //   icon: Briefcase,
-    //   value: "7",
-    //   label: "Major Projects",
-    //   description: "Currently under execution",
-    // },
-    // {
-    //   icon: TrendingUp,
-    //   value: "30%",
-    //   label: "Experienced Staff",
-    //   description: "15+ years association",
-    // },
   ];
 
   return (
@@ -91,11 +83,22 @@ export function PerformanceStatsPremium() {
                       strokeWidth={2}
                     />
                   </div>
-
                   {/* Content */}
+
                   <div className="flex-1">
                     <h3 className="text-3xl font-semibold text-[#1F1F1F] mb-1 leading-none">
-                      {stat.value}
+                      <CountUp
+                        from={0}
+                        to={stat.value}
+                        separator={stat.separator || ""}
+                        direction="up"
+                        duration={1}
+                        className="count-up-text"
+                        startCounting={true}
+                      />
+                      {stat.suffix && (
+                        <span className="ml-1">{stat.suffix}</span>
+                      )}
                     </h3>
                     <p className="text-[#626162] font-semibold text-lg mb-1">
                       {stat.label}
