@@ -7,7 +7,7 @@ import dozer from "@/assets/Machinary/Dozer.png";
 import surfaceMiner from "@/assets/Machinary/Surface Miner.png";
 import loader from "@/assets/Machinary/Loader.png";
 import excavator from "@/assets/Machinary/Excavator.png";
-import grader from "@/assets/Machinary/Grader.png";
+// import grader from "@/assets/Machinary/Grader.png";
 import waterTanker from "@/assets/Machinary/Water Tanker.png";
 import staffBus from "@/assets/Machinary/Staff Bus.png";
 import komatsu from "@/assets/Machinary/Komatsu Dumper.png";
