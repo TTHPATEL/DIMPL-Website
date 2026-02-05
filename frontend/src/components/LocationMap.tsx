@@ -12,6 +12,7 @@ import {
   ArrowUpRight,
 } from "lucide-react";
 import IndiaMap from "./IndiaMap";
+import CountUp from "./ui/CountUp";
 
 declare global {
   interface Window {
@@ -169,7 +170,14 @@ export function LocationMap() {
                         lineHeight: 1,
                       }}
                     >
-                      5
+                      <CountUp
+                        from={0}
+                        to={5}
+                        direction="up"
+                        duration={1}
+                        className="count-up-text"
+                        startCounting={true}
+                      />
                     </p>
                     <p
                       style={{
@@ -203,7 +211,14 @@ export function LocationMap() {
                         lineHeight: 1,
                       }}
                     >
-                      7
+                      <CountUp
+                        from={0}
+                        to={7}
+                        direction="up"
+                        duration={1}
+                        className="count-up-text"
+                        startCounting={true}
+                      />
                     </p>
                     <p
                       style={{
