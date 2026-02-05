@@ -91,10 +91,10 @@ export function Footer() {
               <a
                 href="https://www.linkedin.com/company/durga-infra-mining-pvt-ltd"
                 target="_blank"
-                className="w-10 h-10  hover:text-white flex items-center justify-center transition"
+                className="w-13 h-13 flex items-center justify-center rounded-full
+             bg-transparent hover:bg-[#E77B2E]/10 transition-colors duration-300"
               >
-                {/* <Linkedin size={18} /> */}
-                <img src={linkedinIcon} alt="linkedin" />
+                <img src={linkedinIcon} alt="LinkedIn" className="h-10 w-10" />
               </a>
 
               {/* <a
