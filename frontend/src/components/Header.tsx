@@ -5,15 +5,15 @@ import logo from "@/assets/Logo/DIMPL_Logo_Long_SVG.svg";
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [showWhiteBg, setShowWhiteBg] = useState(false);
+  const [hideHeader, setHideHeader] = useState(false);
 
+  // Detect hero visibility (background change)
   useEffect(() => {
     const hero = document.getElementById("home");
     if (!hero) return;
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        // entry.intersectionRatio = how much hero is visible
-        // when < 0.3 → 70% crossed
         setShowWhiteBg(entry.intersectionRatio < 0.3);
       },
       {
@@ -25,45 +25,61 @@ export function Header() {
     return () => observer.disconnect();
   }, []);
 
+  // Detect scroll direction (hide / show header)
+  useEffect(() => {
+    let lastScrollY = window.scrollY;
+
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        // scrolling down
+        setHideHeader(true);
+      } else {
+        // scrolling up
+        setHideHeader(false);
+      }
+
+      lastScrollY = currentScrollY;
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   const navigation = [
     { name: "Home", href: "#home" },
     { name: "About Us", href: "#about" },
     { name: "Projects", href: "#projects" },
     { name: "Our Fleet", href: "#fleet" },
-    // { name: "Location", href: "#location" },
     { name: "Contact Us", href: "#contact" },
   ];
 
   return (
     <header
       className={`
-        fixed top-0 z-50 w-full transition-colors duration-300
+        fixed top-0 z-50 w-full
+        transition-all duration-300 ease-in-out
         ${showWhiteBg ? "bg-white" : "bg-transparent"}
+        ${hideHeader ? "-translate-y-full" : "translate-y-0"}
       `}
     >
       <nav
-        // className={`
-        //   py-4 px-20 transition-all duration-300
-        //   ${showWhiteBg ? "border-b border-gray-200" : "border-b border-transparent"}
-        // `}
-        className={`py-4 px-4 sm:px-6 lg:px-20 transition-all duration-300 ${showWhiteBg ? "border-b border-gray-200" : "border-b border-transparent"}
-  `}
+        className={`
+          py-4 px-4 sm:px-6 lg:px-20 transition-all duration-300
+          ${showWhiteBg ? "border-b border-gray-200" : "border-b border-transparent"}
+        `}
       >
         <div className="flex h-full items-center justify-between">
-          {/* LOGO — MORE LEFT */}
-          {/* <img
-            src={logo}
-            alt="Durga Infra Mining Pvt Ltd"
-            className="h-[56px] w-auto object-contain"
-          /> */}
-
+          {/* LOGO */}
           <img
             src={logo}
             alt="Durga Infra Mining Pvt Ltd"
             className={`
-    h-[56px] w-auto object-contain transition-all duration-300
-    ${showWhiteBg ? "" : "brightness-0 invert"}
-  `}
+              h-[56px] w-auto object-contain transition-all duration-300
+              ${showWhiteBg ? "" : "brightness-0 invert"}
+            `}
           />
 
           {/* DESKTOP NAV */}
