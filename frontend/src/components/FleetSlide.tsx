@@ -2,7 +2,7 @@ import { ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { useRef, useState } from "react";
 
 import crane from "@/assets/Machinary/Crane Hydra.png";
-import dumper from "@/assets/Machinary/Dumper.png";
+// import dumper from "@/assets/Machinary/Dumper.png";
 import dozer from "@/assets/Machinary/Dozer.png";
 import surfaceMiner from "@/assets/Machinary/Surface Miner.png";
 import loader from "@/assets/Machinary/Loader.png";
