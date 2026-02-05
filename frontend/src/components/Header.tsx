@@ -67,7 +67,7 @@ export function Header() {
           />
 
           {/* DESKTOP NAV */}
-          <div className="hidden md:flex items-center space-x-12 text-[1rem]">
+          <div className="hidden md:flex items-center space-x-12 text-[1.15rem]">
             {navigation.map((item) => (
               <a
                 key={item.name}

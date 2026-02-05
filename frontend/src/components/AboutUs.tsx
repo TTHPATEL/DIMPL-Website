@@ -82,7 +82,7 @@ export function AboutUs() {
     <section id="about" className="min-h-screen py-20 bg-white">
       <div className="text-center mb-16">
         <h2 className="text-4xl md:text-5xl font-bold text-[#605F5A] mb-4">
-          Creating a Lasting <span className="text-[#E5710A]">Legacy</span>
+          Our Lasting <span className="text-[#E5710A]">Legacy</span>
         </h2>
         <div className="w-24 h-1 bg-[#E5710A] mx-auto mb-6"></div>
         <p className="text-lg text-[#605F5A]/80 max-w-3xl mx-auto">

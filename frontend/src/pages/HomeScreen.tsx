@@ -16,10 +16,10 @@ const HomeScreen = () => {
       <main>
         <Hero />
         <AboutUs />
+        <PerformanceStatsPremium />
         {/* <Services /> */}
         <LocationMap />
         <FleetSlide />
-        <PerformanceStatsPremium />
         <Clients />
       </main>
       <Footer />

@@ -10,6 +10,8 @@ import excavator from "@/assets/Machinary/Excavator.png";
 import grader from "@/assets/Machinary/Grader.png";
 import waterTanker from "@/assets/Machinary/Water Tanker.png";
 import staffBus from "@/assets/Machinary/Staff Bus.png";
+import komatsu from "@/assets/Machinary/Komatsu Dumper.png";
+import grader2 from "@/assets/Machinary/Grader New.png";
 /* ---------------- DATA ---------------- */
 const fleetSlides = [
   {
@@ -26,7 +28,7 @@ const fleetSlides = [
   },
   {
     title: "Dumpers",
-    image: dumper,
+    image: komatsu,
     desc: "Heavy-duty dumpers designed for efficient material transportation.",
     link: "/services/dumpers",
   },
@@ -52,7 +54,7 @@ const fleetSlides = [
 
   {
     title: "Graders",
-    image: grader,
+    image: grader2,
     desc: "Reliable graders ensuring fast and efficient grading operations.",
     link: "/services/graders",
   },
