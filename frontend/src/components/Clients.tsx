@@ -35,10 +35,16 @@ export function Clients() {
                   md:w-[220px] md:h-[120px]
                   flex items-center justify-center p-2"
               >
-                <img
+                {/* BLACK LOGO CODE */}
+                {/* <img
                   src={logo}
                   alt="client-logo"
                   className="max-h-full max-w-full object-contain grayscale opacity-70 hover:opacity-100 hover:grayscale-0 transition duration-300"
+                /> */}
+                <img
+                  src={logo}
+                  alt="client-logo"
+                  className="max-h-full max-w-full object-contain transition duration-300"
                 />
               </div>
             ))}

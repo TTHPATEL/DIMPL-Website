@@ -73,15 +73,23 @@ export function Header() {
       >
         <div className="flex h-full items-center justify-between">
           {/* LOGO */}
-          <img
+          {/* WHITE LOGO CODE */}
+          {/* <img
             src={logo}
             alt="Durga Infra Mining Pvt Ltd"
             className={`
               h-[56px] w-auto object-contain transition-all duration-300
               ${showWhiteBg ? "" : "brightness-0 invert"}
             `}
-          />
+          /> */}
 
+          <img
+            src={logo}
+            alt="Durga Infra Mining Pvt Ltd"
+            className={`
+              h-[56px] w-auto object-contain transition-all duration-300
+            `}
+          />
           {/* DESKTOP NAV */}
           <div className="hidden md:flex items-center space-x-12 text-[1.15rem]">
             {navigation.map((item) => (

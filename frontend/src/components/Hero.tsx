@@ -1,6 +1,6 @@
 // import { ChevronRight } from "lucide-react";
-// import miningVideo from "@/assets/Video/Durga Mining 4K.mp4";
-import bgImage from "@/assets/BG Images/BG2.png";
+// import miningVideo from "@/assets/Mines/DIMPL Video.mp4";
+// import bgImage from "@/assets/BG Images/BG2.png";
 export function Hero() {
   return (
     <section
@@ -10,22 +10,22 @@ export function Hero() {
     >
       {/* Background Video */}
       <div className="absolute inset-0 z-0">
-        {/* <video
+        <video
           autoPlay
           loop
           muted
           playsInline
           className="w-full h-full object-cover"
         >
-          <source src={miningVideo} type="video/mp4" />
+          {/* <source src={miningVideo} type="video/mp4" /> */}
           Your browser does not support the video tag.
-        </video> */}
-        <img src={bgImage} alt="" />
+        </video>
+        {/* <img src={bgImage} alt="" /> */}
 
         {/* Gradient Overlay */}
         {/* <div className="absolute inset-0 bg-gradient-to-r from-[#605F5A]/95 via-[#605F5A]/40 to-[#605F5A]/30"></div> */}
         {/* <div className="absolute inset-0 bg-black/25"></div> */}
-        <div className="absolute inset-0 bg-black/5"></div>
+        <div className="absolute inset-0 bg-black/35"></div>
       </div>
 
       {/* Content */}
