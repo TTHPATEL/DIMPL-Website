@@ -293,7 +293,7 @@ export function AboutUs() {
               {/* Horizontal Scrollable Year Selector */}
               <div
                 ref={scrollContainerRef}
-                className="overflow-x-auto pb-4 mb-6 -mx-4 px-4 scrollbar-hide"
+                className="overflow-x-auto pb-4 pt-1 mb-6 -mx-4 px-4 scrollbar-hide"
               >
                 <div className="flex gap-3 justify-start">
                   {milestones.map((m, idx) => {
