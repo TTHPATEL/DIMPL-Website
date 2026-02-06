@@ -30,7 +30,7 @@ export default function CountUp({
 }: CountUpProps) {
   const ref = useRef<HTMLSpanElement>(null);
   const motionValue = useMotionValue(direction === "down" ? to : from);
-
+  void startCounting;
   const damping = 20 + 40 * (1 / duration);
   const stiffness = 100 * (1 / duration);
 
