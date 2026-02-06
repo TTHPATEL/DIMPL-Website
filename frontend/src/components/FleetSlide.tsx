@@ -81,7 +81,16 @@ export function FleetSlide() {
 
   // Container ref for dead zone calculation
   const containerRef = useRef<HTMLDivElement>(null);
-  const DEAD_ZONE_PX = 100; // Horizontal padding dead zone
+
+  // Responsive dead zone: smaller on mobile, larger on desktop
+  const getDeadZone = () => {
+    if (typeof window === "undefined") return 60;
+    const width = window.innerWidth;
+    if (width < 640) return 40; // sm: 40px dead zone
+    if (width < 768) return 60; // md: 60px dead zone
+    return 100; // lg+: 100px dead zone
+  };
+
   const SWIPE_THRESHOLD = 80; // Minimum drag distance to trigger slide change
 
   // Get next/prev indices (circular)
@@ -95,7 +104,8 @@ export function FleetSlide() {
     if (!containerRef.current) return true;
     const rect = containerRef.current.getBoundingClientRect();
     const relativeX = clientX - rect.left;
-    return relativeX < DEAD_ZONE_PX || relativeX > rect.width - DEAD_ZONE_PX;
+    const deadZone = getDeadZone();
+    return relativeX < deadZone || relativeX > rect.width - deadZone;
   };
 
   const startDrag = (clientX: number) => {
@@ -239,16 +249,16 @@ export function FleetSlide() {
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center py-20">
-          <h2 className="text-4xl md:text-5xl font-bold text-[#605F5A] mb-4">
+        <div className="text-center py-12 sm:py-16 md:py-20">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#605F5A] mb-4">
             Our Fleet
           </h2>
-          <div className="w-24 h-1 bg-[#E5710A] mx-auto mb-6"></div>
+          <div className="w-20 sm:w-24 h-1 bg-[#E5710A] mx-auto mb-4 sm:mb-6"></div>
         </div>
 
         {/* Background Text */}
         <div>
-          <h2 className="absolute inset-0 flex items-center justify-center text-center z-10 text-7xl md:text-9xl lg:text-[10rem] font-extrabold tracking-widest text-transparent stroke-text">
+          <h2 className="absolute inset-0 flex items-center justify-center text-center z-10 text-5xl sm:text-6xl md:text-8xl lg:text-9xl xl:text-[10rem] font-extrabold tracking-widest text-transparent stroke-text">
             DURGA INFRA
           </h2>
         </div>
@@ -260,7 +270,7 @@ export function FleetSlide() {
             src={fleetSlides[getPrevIndex(current)].image}
             draggable={false}
             onDragStart={(e) => e.preventDefault()}
-            className="absolute h-[260px] md:h-[320px] w-auto object-contain"
+            className="absolute h-[180px] sm:h-[220px] md:h-[280px] lg:h-[320px] w-auto object-contain"
             style={getPrevImageStyle() as React.CSSProperties}
             alt={fleetSlides[getPrevIndex(current)].title}
           />
@@ -270,7 +280,7 @@ export function FleetSlide() {
             src={fleetSlides[current].image}
             draggable={false}
             onDragStart={(e) => e.preventDefault()}
-            className="absolute h-[260px] md:h-[320px] w-auto object-contain"
+            className="absolute h-[180px] sm:h-[220px] md:h-[280px] lg:h-[320px] w-auto object-contain"
             style={getCurrentImageStyle() as React.CSSProperties}
             alt={fleetSlides[current].title}
           />
@@ -280,7 +290,7 @@ export function FleetSlide() {
             src={fleetSlides[getNextIndex(current)].image}
             draggable={false}
             onDragStart={(e) => e.preventDefault()}
-            className="absolute h-[260px] md:h-[320px] w-auto object-contain"
+            className="absolute h-[180px] sm:h-[220px] md:h-[280px] lg:h-[320px] w-auto object-contain"
             style={getNextImageStyle() as React.CSSProperties}
             alt={fleetSlides[getNextIndex(current)].title}
           />
@@ -289,13 +299,15 @@ export function FleetSlide() {
         {/* TEXT - fades with current slide */}
         <div
           key={current}
-          className="absolute bottom-20 left-1/2 -translate-x-1/2 z-30 text-center max-w-xl px-4 animate-textFadeUp"
+          className="absolute bottom-16 sm:bottom-20 left-1/2 -translate-x-1/2 z-30 text-center w-full max-w-xl px-6 sm:px-4 animate-textFadeUp"
         >
-          <h3 className="text-2xl md:text-3xl font-bold text-[#605F5A] mb-2">
+          <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-[#605F5A] mb-2">
             {fleetSlides[current].title}
           </h3>
-          <p className="text-[#605F5A]/80 mb-4">{fleetSlides[current].desc}</p>
-          <button className="inline-flex items-center text-white font-semibold bg-[#E77B2E] py-2 px-3 rounded-2xl cursor-pointer transition-all duration-300 ease-in-out hover:bg-[#d66a1f]">
+          <p className="text-sm sm:text-base text-[#605F5A]/80 mb-4">
+            {fleetSlides[current].desc}
+          </p>
+          <button className="inline-flex items-center text-sm sm:text-base text-white font-semibold bg-[#E77B2E] py-2 px-3 rounded-2xl cursor-pointer transition-all duration-300 ease-in-out hover:bg-[#d66a1f]">
             <span className="pr-1">
               <ArrowUpRight size={18} strokeWidth={2.5} />
             </span>
@@ -312,11 +324,13 @@ export function FleetSlide() {
             changeSlide("left");
           }}
           disabled={isTransitioning || isDragging}
-          className="absolute left-6 md:left-38 top-1/2 -translate-y-1/2 z-30 bg-transparent hover:bg-[#E5710A] hover:text-white cursor-pointer p-2 rounded-full disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+          className="absolute left-2 sm:left-4 md:left-6 lg:left-38 top-1/2 -translate-y-1/2 z-30 bg-transparent hover:bg-[#E5710A] hover:text-white cursor-pointer p-1 sm:p-2 rounded-full disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
         >
           <div className="flex items-center">
-            <ChevronLeft size={28} />
-            <ChevronLeft size={28} />
+            <ChevronLeft size={20} className="sm:hidden" />
+            <ChevronLeft size={20} className="sm:hidden" />
+            <ChevronLeft size={28} className="hidden sm:block" />
+            <ChevronLeft size={28} className="hidden sm:block" />
           </div>
         </button>
 
@@ -328,11 +342,13 @@ export function FleetSlide() {
             changeSlide("right");
           }}
           disabled={isTransitioning || isDragging}
-          className="absolute right-6 md:right-38 top-1/2 -translate-y-1/2 z-30 bg-transparent hover:bg-[#E5710A] hover:text-white cursor-pointer p-2 rounded-full disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+          className="absolute right-2 sm:right-4 md:right-6 lg:right-38 top-1/2 -translate-y-1/2 z-30 bg-transparent hover:bg-[#E5710A] hover:text-white cursor-pointer p-1 sm:p-2 rounded-full disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
         >
           <div className="flex items-center">
-            <ChevronRight size={28} />
-            <ChevronRight size={28} />
+            <ChevronRight size={20} className="sm:hidden" />
+            <ChevronRight size={20} className="sm:hidden" />
+            <ChevronRight size={28} className="hidden sm:block" />
+            <ChevronRight size={28} className="hidden sm:block" />
           </div>
         </button>
       </div>
