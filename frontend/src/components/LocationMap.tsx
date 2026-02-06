@@ -257,7 +257,12 @@ export function LocationMap() {
                     Our Locations
                   </p>
                   <div
-                    style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}
+                    style={{
+                      display: "flex",
+                      flexWrap: "wrap",
+                      gap: "8px",
+                      justifyContent: "center",
+                    }}
                   >
                     {[
                       "Gujarat",

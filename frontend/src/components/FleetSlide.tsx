@@ -307,10 +307,24 @@ export function FleetSlide() {
           <p className="text-sm sm:text-base text-[#605F5A]/80 mb-4">
             {fleetSlides[current].desc}
           </p>
-          <button className="inline-flex items-center text-sm sm:text-base text-white font-semibold bg-[#E77B2E] py-2 px-3 rounded-2xl cursor-pointer transition-all duration-300 ease-in-out hover:bg-[#d66a1f]">
-            <span className="pr-1">
-              <ArrowUpRight size={18} strokeWidth={2.5} />
-            </span>
+          <button
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              cursor: "pointer",
+              transition: "all 0.3s ease",
+              gap: "8px",
+              backgroundColor: "#E77B2E",
+              color: "#FFFFFF",
+              padding: "10px 20px",
+              borderRadius: "8px",
+              fontSize: "14px",
+              fontWeight: "700",
+              letterSpacing: "0.3px",
+              boxShadow: "0 2px 8px rgba(231, 123, 46, 0.3)",
+            }}
+          >
+            <ArrowUpRight size={18} strokeWidth={2.5} />
             Explore More
           </button>
         </div>

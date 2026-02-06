@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { ArrowRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
+// import { ArrowRight } from "lucide-react";
 import dig from "../assets/History Photo/Dig.jpg";
 import thermal2 from "../assets/History Photo/Thermal2.jpg";
 import od from "../assets/Mines/GJ.png";
@@ -92,7 +93,7 @@ export function AboutUs() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col lg:flex-row gap-19 items-start">
           {/* Left Column */}
-          <div className="lg:w-1/3">
+          <div className="lg:w-1/3 px-4 lg:px-0">
             {/* <div className="space-y-4 mb-10">
               <h2 className="text-4xl md:text-5xl font-extrabold text-[#605F5A] leading-tight">
                 Creating a Lasting
@@ -126,53 +127,30 @@ export function AboutUs() {
               </p>
             </div>
 
-            {/* <div className="space-y-6 text-base text-[#605F5A]/80 leading-relaxed">
-              <p>
-                <strong className="text-[#605F5A]">
-                  Durga Infra Mining Private Limited (DIMPL)
-                </strong>{" "}
-                is a leading mining contractor engaged in comprehensive mine
-                development and operations across India. The company specializes
-                in overburden removal and coal and lignite extraction, supported
-                by modern equipment and decades of hands-on industry experience.
-              </p>
-
-              <p>
-                With capabilities spanning earthwork, drilling, blasting,
-                dewatering, and complete mining operations, DIMPL has
-                successfully contributed to major infrastructure and mining
-                projects including roads, dams, canals, thermal power stations,
-                and large-scale coal and lignite mines.
-              </p>
-
-              <p>
-                Established in 1994 as Durga Construction Co. with a modest
-                beginning of one excavator and a few dumpers, the organization
-                has grown steadily into a large-scale mining enterprise. Today,
-                DIMPL operates a strong fleet of heavy equipment with a skilled
-                workforce and delivers projects directly for leading State and
-                Central Government bodies as well as prominent private sector
-                organizations.
-              </p>
-
-              <p>
-                The company has executed landmark projects across Gujarat,
-                Rajasthan, Telangana, Maharashtra, Odisha, Chhattisgarh, and
-                Madhya Pradesh, overcoming diverse site conditions ranging from
-                waterlogged mines requiring extensive dewatering to unstable
-                geological formations demanding precise and safe execution.
-              </p>
-
-              <p className="text-[#E5710A] font-semibold italic">
-                Consistently delivering results across every terrain and
-                challenge.
-              </p>
-            </div> */}
-
             <div className="pt-8">
-              <button className="group inline-flex items-center gap-2 text-[#E5710A] font-bold border-b-2 border-[#E5710A] pb-1 hover:gap-4 transition-all">
+              {/* <button className="group inline-flex items-center gap-2 text-[#E5710A] font-bold border-b-2 border-[#E5710A] pb-1 hover:gap-4 transition-all">
                 <span>Explore Our Journey</span>
                 <ArrowRight size={18} />
+              </button> */}
+              <button
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  cursor: "pointer",
+                  transition: "all 0.3s ease",
+                  gap: "8px",
+                  backgroundColor: "#E77B2E",
+                  color: "#FFFFFF",
+                  padding: "12px 24px",
+                  borderRadius: "8px",
+                  fontSize: "14px",
+                  fontWeight: "700",
+                  letterSpacing: "0.3px",
+                  boxShadow: "0 2px 8px rgba(231, 123, 46, 0.3)",
+                }}
+              >
+                <ArrowUpRight size={18} strokeWidth={2.5} />
+                Explore Our Journey
               </button>
             </div>
           </div>
