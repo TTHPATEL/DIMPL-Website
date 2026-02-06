@@ -14,12 +14,6 @@ import {
 import IndiaMap from "./IndiaMap";
 import CountUp from "./ui/CountUp";
 
-declare global {
-  interface Window {
-    simplemaps_countrymap: any;
-  }
-}
-
 export function LocationMap() {
   const [selectedState, setSelectedState] = useState<string | null>(null);
   const [selectedSites, setSelectedSites] = useState<Site[]>([]);
