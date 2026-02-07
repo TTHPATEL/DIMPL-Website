@@ -129,7 +129,7 @@ export function LocationMap() {
                       lineHeight: "1.5",
                     }}
                   >
-                    Choose a highlighted state to view project details.
+                    Choose a Active state to view project details.
                   </p>
                 </div>
 
@@ -609,14 +609,13 @@ export function LocationMap() {
                           </div>
 
                           {/* Key Metrics - 2x2 Grid */}
-                          <div
+                          {/* <div
                             style={{
                               display: "grid",
                               gridTemplateColumns: "1fr 1fr",
                               gap: "10px",
                             }}
                           >
-                            {/* Duration */}
                             <div
                               style={{
                                 backgroundColor: "#F6F6F6",
@@ -664,7 +663,6 @@ export function LocationMap() {
                               </p>
                             </div>
 
-                            {/* Project Value */}
                             <div
                               style={{
                                 backgroundColor: "#F6F6F6",
@@ -712,7 +710,6 @@ export function LocationMap() {
                               </p>
                             </div>
 
-                            {/* OB Work */}
                             <div
                               style={{
                                 backgroundColor: "#F6F6F6",
@@ -760,7 +757,6 @@ export function LocationMap() {
                               </p>
                             </div>
 
-                            {/* Coal Work */}
                             <div
                               style={{
                                 backgroundColor: "#F6F6F6",
@@ -807,7 +803,7 @@ export function LocationMap() {
                                 {site.Coal_work} L MT
                               </p>
                             </div>
-                          </div>
+                          </div> */}
                         </div>
                       </div>
                     ))}
