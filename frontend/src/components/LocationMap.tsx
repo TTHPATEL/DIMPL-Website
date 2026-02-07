@@ -71,7 +71,7 @@ export function LocationMap() {
 
         <div className="flex flex-col lg:flex-row gap-8 items-start">
           {/* MAP CONTAINER */}
-          <div className="w-full lg:w-1/2">
+          <div className="w-full lg:w-1/2 px-4 md:px-0">
             <IndiaMap onStateSelect={handleStateSelect} />
           </div>
 
