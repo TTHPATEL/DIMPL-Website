@@ -60,6 +60,8 @@ const IndiaMap: React.FC<IndiaMapProps> = ({ onStateSelect }) => {
       "IN-OR",
       "IN-TG",
     ];
+    // Completed states
+    const completedStates = ["IN-MH", "IN-RJ"];
 
     // Default settings for all states
     polygonSeries.mapPolygons.template.setAll({
@@ -111,6 +113,22 @@ const IndiaMap: React.FC<IndiaMapProps> = ({ onStateSelect }) => {
           // Create hover effect only for highlighted states
           polygon.states.create("hover", {
             fill: am5.color(0xe5710a), // Darker orange on hover
+          });
+
+          // Show pointer cursor on highlighted states
+          polygon.set("cursorOverStyle", "pointer");
+        }
+        // Completed states
+        if (dataContext && completedStates.includes(dataContext.id)) {
+          polygon.setAll({
+            interactive: true, // Enable interaction only for highlighted states
+            tooltipText: "{name}", // Show tooltip only for highlighted states
+            fill: am5.color(0xd2b48c), // Orange color for highlighted states
+          });
+
+          // Create hover effect only for highlighted states
+          polygon.states.create("hover", {
+            fill: am5.color(0xb89563), // Darker orange on hover
           });
 
           // Show pointer cursor on highlighted states
