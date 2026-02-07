@@ -348,9 +348,9 @@ export function AboutUs() {
                   {/* Content */}
                   <div className="absolute inset-0 p-6 sm:p-8 flex flex-col justify-end">
                     <div className="mb-2">
-                      <span className="inline-block bg-[#E5710A] text-white px-4 py-1.5 rounded-full text-sm font-bold">
+                      {/* <span className="inline-block bg-[#E5710A] text-white px-4 py-1.5 rounded-full text-sm font-bold">
                         {activeMilestone.year}
-                      </span>
+                      </span> */}
                     </div>
                     <h3 className="text-xl sm:text-2xl font-bold text-white mb-3">
                       {activeMilestone.title}
