@@ -1,16 +1,8 @@
 import { useState, useRef } from "react";
 import { LOCATION_DATA } from "../data/SiteData";
 import type { Site } from "../data/SiteData";
-import {
-  MapPin,
-  ChevronRight,
-  ChevronLeft,
-  Calendar,
-  TrendingUp,
-  Hammer,
-  Package,
-  ArrowUpRight,
-} from "lucide-react";
+import { MapPin, ChevronRight, ChevronLeft, ArrowUpRight } from "lucide-react";
+// import { Calendar, TrendingUp, Hammer, Package } from "lucide-react";
 import IndiaMap from "./IndiaMap";
 import CountUp from "./ui/CountUp";
 
