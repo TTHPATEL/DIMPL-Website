@@ -331,7 +331,7 @@ export function AboutUs() {
 
               {/* Active Milestone Card */}
               <div
-                className="relative rounded-2xl overflow-hidden shadow-2xl"
+                className="relative rounded-2xl overflow-hidden shadow-lg"
                 onTouchStart={handleTouchStart}
                 onTouchMove={handleTouchMove}
                 onTouchEnd={handleTouchEnd}
@@ -343,14 +343,14 @@ export function AboutUs() {
                     alt={activeMilestone.title}
                     className="absolute inset-0 w-full h-full object-cover animate-fadeIn"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/20 to-transparent"></div>
 
                   {/* Content */}
-                  <div className="absolute inset-0 p-6 sm:p-8 flex flex-col justify-end">
+                  {/* <div className="absolute inset-0 p-6 sm:p-8 flex flex-col justify-end">
                     <div className="mb-2">
-                      {/* <span className="inline-block bg-[#E5710A] text-white px-4 py-1.5 rounded-full text-sm font-bold">
+                      <span className="inline-block bg-[#E5710A] text-white px-4 py-1.5 rounded-full text-sm font-bold">
                         {activeMilestone.year}
-                      </span> */}
+                      </span>
                     </div>
                     <h3 className="text-xl sm:text-2xl font-bold text-white mb-3">
                       {activeMilestone.title}
@@ -358,7 +358,7 @@ export function AboutUs() {
                     <p className="text-gray-200 text-sm sm:text-base leading-relaxed">
                       {activeMilestone.description}
                     </p>
-                  </div>
+                  </div> */}
 
                   {/* Progress Indicator */}
                   <div className="absolute bottom-0 left-0 w-full h-1 bg-white/20">
@@ -368,8 +368,21 @@ export function AboutUs() {
                     ></div>
                   </div>
                 </div>
+                {/* Content */}
+                <div className="p-6 sm:p-8 flex flex-col justify-end">
+                  <div className="mb-2">
+                    {/* <span className="inline-block bg-[#E5710A] text-white px-4 py-1.5 rounded-full text-sm font-bold">
+                        {activeMilestone.year}
+                      </span> */}
+                  </div>
+                  <h3 className="text-xl sm:text-2xl font-bold mb-3">
+                    {activeMilestone.title}
+                  </h3>
+                  <p className="text-sm sm:text-base leading-relaxed">
+                    {activeMilestone.description}
+                  </p>
+                </div>
               </div>
-
               {/* Navigation Dots */}
               <div className="flex justify-center gap-2 mt-6">
                 {milestones.map((_, idx) => (
