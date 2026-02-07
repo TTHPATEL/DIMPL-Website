@@ -1,5 +1,6 @@
 import { useState, useRef } from "react";
 import { ArrowUpRight } from "lucide-react";
+// import { ArrowRight } from "lucide-react";
 import dig from "../assets/History Photo/Dig.jpg";
 import thermal2 from "../assets/History Photo/Thermal2.jpg";
 import od from "../assets/Mines/GJ.png";
@@ -10,6 +11,7 @@ export function AboutUs() {
     {
       id: 1,
       year: "1994",
+      // location: "BHUJ-KUTCH, GUJARAT",
       title: "Foundation as Durga Construction Co.",
       description:
         "Durga Construction Co. was established as a partnership firm with a small set of earthwork equipment, including one Tata Hitachi-083 excavator and 4-5 dumpers. The company began its journey as a sub contractor, focusing on basic earthwork activities.",
@@ -18,6 +20,7 @@ export function AboutUs() {
     {
       id: 2,
       year: "2000–2010",
+      // location: "MULTI-STATE OPERATIONS",
       title: "Steady Growth and Experience",
       description:
         "With growing experience, the firm executed earthwork projects for roads, dams, canals, and thermal power stations. This period marked steady expansion in capability, manpower, and execution of increasingly complex works.",
@@ -26,6 +29,7 @@ export function AboutUs() {
     {
       id: 3,
       year: "2010–2017",
+      // location: "RAJASTHAN & TELANGANA",
       title: "Entry into Large Scale Mining",
       description:
         "The company evolved into a main contractor for State and Central Government projects. Major mining assignments were completed for GMDC, SCCL, and RSMM, establishing a strong presence in coal and lignite mining.",
@@ -34,6 +38,7 @@ export function AboutUs() {
     {
       id: 4,
       year: "2018–2019",
+      // location: "MAHARASHTRA & TELANGANA",
       title: "Handling Complex Geological Conditions",
       description:
         "Projects were executed under challenging site conditions involving hard rock, unstable benches, and long lead and lift requirements. These works strengthened the company's operational and technical capabilities.",
@@ -42,6 +47,7 @@ export function AboutUs() {
     {
       id: 5,
       year: "2020",
+      // location: "PAN-INDIA",
       title: "Transition to Corporate Entity",
       description:
         "On 09/09/2020, the partnership firm was converted into Durga Infra Mining Private Limited. This transition marked a new phase of structured growth, governance, and nationwide operations.",
@@ -50,6 +56,7 @@ export function AboutUs() {
     {
       id: 6,
       year: "2021–2024",
+      // location: "GUJARAT & RAJASTHAN",
       title: "Major Mining Achievements",
       description:
         "At GMDC Rajpardi, extensive dewatering of nearly 50,000 cubic meters per day enabled lignite extraction under heavy water ingress. At Tadkeshwar, overburden removal of about 1 lakh cubic meters per day was achieved despite sliding strata.",
@@ -59,6 +66,7 @@ export function AboutUs() {
     {
       id: 7,
       year: "2025",
+      // location: "NATIONWIDE PRESENCE",
       title: "Established National Footprint",
       description:
         "DIMPL operates multiple large mining projects across India with a strong fleet of equipment and a skilled workforce. The company continues to deliver consistent performance across diverse geological and operational conditions.",
@@ -68,17 +76,19 @@ export function AboutUs() {
   ];
 
   const [activeIndex, setActiveIndex] = useState(0);
-  const [imageLoaded, setImageLoaded] = useState<{ [key: number]: boolean }>(
-    {},
-  );
+
   const activeMilestone = milestones[activeIndex];
   const progressHeight = ((activeIndex + 1) / milestones.length) * 100;
 
+  // Swipe handling for mobile
   const touchStartX = useRef(0);
   const touchEndX = useRef(0);
   const minSwipeDistance = 50;
+
+  // Ref for horizontal scroll container
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
+  // Auto-scroll to active year button
   const scrollToActiveYear = (index: number) => {
     if (scrollContainerRef.current) {
       const container = scrollContainerRef.current;
@@ -90,6 +100,8 @@ export function AboutUs() {
         const containerWidth = container.offsetWidth;
         const buttonLeft = activeButton.offsetLeft;
         const buttonWidth = activeButton.offsetWidth;
+
+        // Calculate scroll position to center the active button
         const scrollPosition =
           buttonLeft - containerWidth / 2 + buttonWidth / 2;
 
@@ -127,17 +139,15 @@ export function AboutUs() {
     }
   };
 
+  // Handle click on year button
   const handleYearClick = (index: number) => {
     setActiveIndex(index);
     scrollToActiveYear(index);
   };
 
-  const handleImageLoad = (index: number) => {
-    setImageLoaded((prev) => ({ ...prev, [index]: true }));
-  };
-
   return (
     <>
+      {/* Inline Styles for Animations */}
       <style>{`
         .scrollbar-hide::-webkit-scrollbar {
           display: none;
@@ -149,36 +159,36 @@ export function AboutUs() {
         @keyframes fadeIn {
           from {
             opacity: 0;
-            transform: translateY(10px);
+            transform: scale(1.05);
           }
           to {
             opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        @keyframes shimmer {
-          0% {
-            background-position: -1000px 0;
-          }
-          100% {
-            background-position: 1000px 0;
+            transform: scale(1);
+
+
+
+
+
+
+
+
           }
         }
         .animate-fadeIn {
           animation: fadeIn 0.4s ease-in-out;
         }
-        .skeleton {
-          background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
-          background-size: 1000px 100%;
-          animation: shimmer 2s infinite;
-        }
+
+
+
+
+
       `}</style>
 
       <section
         id="about"
         className="min-h-screen py-12 sm:py-16 md:py-20 bg-white"
       >
-        {/* Header */}
+        {/* Header Section - Responsive */}
         <div className="text-center mb-10 sm:mb-12 md:mb-16 px-4">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#605F5A] mb-3 sm:mb-4">
             Our Lasting <span className="text-[#E5710A]">Legacy</span>
@@ -190,9 +200,9 @@ export function AboutUs() {
         </div>
 
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col lg:flex-row gap-8 sm:gap-12 lg:gap-16 items-start">
+          <div className="flex flex-col lg:flex-row gap-8 sm:gap-12 lg:gap-19 items-start">
             {/* Left Column - Company Info */}
-            <div className="w-full lg:w-1/3">
+            <div className="w-full lg:w-1/3 px-0">
               <div className="text-base sm:text-lg text-justify text-[#605F5A]/80 leading-relaxed">
                 <p>
                   <strong className="text-[#605F5A]">
@@ -228,91 +238,73 @@ export function AboutUs() {
             </div>
 
             {/* Right Column: Timeline - Desktop & Tablet */}
-            <div className="hidden lg:block lg:w-2/3 w-full">
-              <div className="flex gap-6 lg:gap-8 items-stretch">
+            <div className="hidden lg:block lg:w-2/3 w-full relative group">
+              <div className="flex gap-6 lg:gap-10 items-stretch h-[450px] sm:h-[500px] lg:h-[600px]">
                 {/* Year Selector */}
-                <div className="flex flex-col justify-between py-4 min-w-[110px]">
+                <div className="flex flex-col justify-center gap-4 sm:gap-6 py-4">
                   {milestones.map((m, idx) => {
                     const isActive = idx === activeIndex;
                     return (
-                      <button
+                      <div
                         key={m.id}
                         onClick={() => handleYearClick(idx)}
-                        className={`px-5 py-2.5 rounded-full transition-all text-start duration-300 ${
-                          isActive
-                            ? "bg-[#E5710A] text-white shadow-lg scale-105"
-                            : "text-gray-500 hover:bg-[#E5710A]/10 hover:text-[#E5710A]"
-                        }`}
+                        className="cursor-pointer"
                       >
-                        <span className="text-base font-bold whitespace-nowrap">
-                          {m.year}
-                        </span>
-                      </button>
+                        <div
+                          className={`min-w-[90px] sm:min-w-[110px] px-4 sm:px-5 py-2 sm:py-2.5 rounded-full transition-all ${
+                            isActive
+                              ? "bg-[#E5710A] text-white"
+                              : "text-gray-400 hover:bg-[#E5710A]/10"
+                          }`}
+                        >
+                          <span className="text-base sm:text-lg font-bold whitespace-nowrap">
+                            {m.year}
+                          </span>
+                        </div>
+                      </div>
                     );
                   })}
                 </div>
 
-                {/* Image and Content Side by Side */}
-                <div className="flex-1 flex flex-col gap-6">
-                  {/* Image Container */}
-                  <div
-                    className="relative rounded-2xl overflow-hidden shadow-2xl h-80"
-                    onTouchStart={handleTouchStart}
-                    onTouchMove={handleTouchMove}
-                    onTouchEnd={handleTouchEnd}
-                  >
-                    {!imageLoaded[activeIndex] && (
-                      <div className="absolute inset-0 skeleton"></div>
-                    )}
-                    <img
-                      key={activeIndex}
-                      src={activeMilestone.image}
-                      alt={activeMilestone.title}
-                      loading="lazy"
-                      onLoad={() => handleImageLoad(activeIndex)}
-                      className={`w-full h-full object-cover transition-opacity duration-300 ${
-                        imageLoaded[activeIndex] ? "opacity-100" : "opacity-0"
-                      }`}
-                    />
-                    {/* Subtle gradient overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
-
-                    {/* Progress Bar */}
-                    <div className="absolute top-0 left-0 w-full h-1.5 bg-white/20">
-                      <div
-                        className="h-full bg-[#E5710A] transition-all duration-500"
-                        style={{ width: `${progressHeight}%` }}
-                      ></div>
-                    </div>
-                  </div>
-
-                  {/* Content Card - Separate from Image */}
-                  <div className="bg-gradient-to-br from-gray-50 to-white p-6 rounded-2xl shadow-lg border border-gray-100 animate-fadeIn">
-                    <div className="flex items-center gap-3 mb-3">
-                      {/* <span className="inline-block bg-[#E5710A] text-white px-4 py-1.5 rounded-full text-sm font-bold">
-                        {activeMilestone.year}
-                      </span> */}
-                      <div className="text-3xl font-bold text-[#E5710A]/20">
-                        #{activeIndex + 1}
-                      </div>
-                      <div className="h-px flex-1 bg-gradient-to-r from-[#E5710A]/30 to-transparent"></div>
-                    </div>
-
-                    <h3 className="text-2xl font-bold text-[#605F5A] mb-3">
+                {/* Image Card */}
+                <div
+                  className="flex-1 relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl"
+                  onTouchStart={handleTouchStart}
+                  onTouchMove={handleTouchMove}
+                  onTouchEnd={handleTouchEnd}
+                >
+                  <img
+                    src={activeMilestone.image}
+                    alt={activeMilestone.title}
+                    className="absolute inset-0 w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
+                  <div className="absolute inset-0 p-2 sm:p-4 lg:p-8 flex flex-col justify-end">
+                    <span className="text-[#F1C40F] font-bold text-xs sm:text-sm uppercase">
+                      {/* {activeMilestone.location} */}
+                    </span>
+                    <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white mt-2">
                       {activeMilestone.title}
                     </h3>
-
-                    <p className="text-[#605F5A]/80 text-base leading-relaxed">
+                    <p className="text-gray-200 text-sm sm:text-base lg:text-lg mt-2 sm:mt-3 line-clamp-4">
                       {activeMilestone.description}
                     </p>
+                  </div>
+
+                  {/* Progress Bar */}
+                  <div className="absolute top-0 left-0 w-1 sm:w-1.5 h-full bg-white/10">
+                    <div
+                      className="w-full bg-[#E5710A] transition-all duration-300"
+                      style={{ height: `${progressHeight}%` }}
+                    ></div>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Mobile Timeline */}
+            {/* Mobile Timeline - Horizontal Year Selector + Active Card */}
             <div className="lg:hidden w-full">
-              {/* Horizontal Year Selector */}
+              {/* Horizontal Scrollable Year Selector */}
               <div
                 ref={scrollContainerRef}
                 className="overflow-x-auto pb-4 pt-1 mb-6 -mx-4 px-4 scrollbar-hide"
@@ -337,31 +329,39 @@ export function AboutUs() {
                 </div>
               </div>
 
-              {/* Image */}
+              {/* Active Milestone Card */}
               <div
-                className="relative rounded-2xl overflow-hidden shadow-2xl mb-6"
+                className="relative rounded-2xl overflow-hidden shadow-2xl"
                 onTouchStart={handleTouchStart}
                 onTouchMove={handleTouchMove}
                 onTouchEnd={handleTouchEnd}
               >
-                <div className="relative h-64 sm:h-80">
-                  {!imageLoaded[activeIndex] && (
-                    <div className="absolute inset-0 skeleton"></div>
-                  )}
+                <div className="relative h-80 sm:h-96">
                   <img
                     key={activeIndex}
                     src={activeMilestone.image}
                     alt={activeMilestone.title}
-                    loading="lazy"
-                    onLoad={() => handleImageLoad(activeIndex)}
-                    className={`w-full h-full object-cover transition-opacity duration-300 ${
-                      imageLoaded[activeIndex] ? "opacity-100" : "opacity-0"
-                    }`}
+                    className="absolute inset-0 w-full h-full object-cover animate-fadeIn"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
 
-                  {/* Progress Bar */}
-                  <div className="absolute bottom-0 left-0 w-full h-1.5 bg-white/30">
+                  {/* Content */}
+                  <div className="absolute inset-0 p-6 sm:p-8 flex flex-col justify-end">
+                    <div className="mb-2">
+                      <span className="inline-block bg-[#E5710A] text-white px-4 py-1.5 rounded-full text-sm font-bold">
+                        {activeMilestone.year}
+                      </span>
+                    </div>
+                    <h3 className="text-xl sm:text-2xl font-bold text-white mb-3">
+                      {activeMilestone.title}
+                    </h3>
+                    <p className="text-gray-200 text-sm sm:text-base leading-relaxed">
+                      {activeMilestone.description}
+                    </p>
+                  </div>
+
+                  {/* Progress Indicator */}
+                  <div className="absolute bottom-0 left-0 w-full h-1 bg-white/20">
                     <div
                       className="h-full bg-[#E5710A] transition-all duration-500"
                       style={{ width: `${progressHeight}%` }}
@@ -370,29 +370,8 @@ export function AboutUs() {
                 </div>
               </div>
 
-              {/* Content Card - Separate */}
-              <div className="bg-gradient-to-br from-gray-50 to-white p-6 rounded-2xl shadow-lg border border-gray-100 mb-6 animate-fadeIn">
-                <div className="flex items-center gap-3 mb-3">
-                  {/* <span className="inline-block bg-[#E5710A] text-white px-4 py-1.5 rounded-full text-sm font-bold">
-                    {activeMilestone.year}
-                  </span> */}
-                  <div className="text-3xl font-bold text-[#E5710A]/20">
-                    #{activeIndex + 1}
-                  </div>
-                  <div className="h-px flex-1 bg-gradient-to-r from-[#E5710A]/30 to-transparent"></div>
-                </div>
-
-                <h3 className="text-xl sm:text-2xl font-bold text-[#605F5A] mb-3">
-                  {activeMilestone.title}
-                </h3>
-
-                <p className="text-[#605F5A]/80 text-sm sm:text-base leading-relaxed">
-                  {activeMilestone.description}
-                </p>
-              </div>
-
               {/* Navigation Dots */}
-              <div className="flex justify-center gap-2 mb-6">
+              <div className="flex justify-center gap-2 mt-6">
                 {milestones.map((_, idx) => (
                   <button
                     key={idx}
@@ -407,8 +386,8 @@ export function AboutUs() {
                 ))}
               </div>
 
-              {/* Button */}
-              <div className="flex justify-center">
+              {/* Explore Journey Button - Mobile Only */}
+              <div className="flex justify-center mt-8">
                 <button className="inline-flex items-center gap-2 bg-[#E77B2E] text-white px-6 py-3 rounded-lg text-base font-bold shadow-lg hover:bg-[#d66a1f] transition-all duration-300 hover:shadow-xl">
                   <ArrowUpRight size={18} strokeWidth={2.5} />
                   Explore Our Journey
