@@ -209,17 +209,17 @@ export function AboutUs() {
                     Durga Infra Mining Private Limited (DIMPL)
                   </strong>{" "}
                   is a leading mining company engaged in comprehensive mine
-                  development and operations across India. The company
-                  specializes in overburden removal and coal and lignite
-                  extraction, supported by modern equipment and two decades of
-                  hands-on industry experience.
+                  development and operations across India. We specializes in
+                  overburden removal and coal and lignite extraction, supported
+                  by modern equipment and two decades of hands-on industry
+                  experience.
                 </p>
 
                 <p className="pt-3 sm:pt-4">
-                  Over the years, DIMPL has executed a wide range of
+                  Over the years, we have executed a wide range of
                   infrastructure and mining projects including roads, dams,
-                  canals, and thermal power stations, and focuses on large-scale
-                  coal and lignite mining operations, delivering high-volume
+                  canals, and thermal power stations. We focus on large scale
+                  coal and lignite mining operations, delivering high volume
                   production under complex geological and site conditions.
                 </p>
 

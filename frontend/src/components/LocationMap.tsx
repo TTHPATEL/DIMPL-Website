@@ -73,7 +73,7 @@ export function LocationMap() {
           </h2>
           <div className="w-24 h-1 bg-[#E77B2E] mx-auto mb-4" />
           <p className="text-[#1F1F1F]/70 max-w-2xl mx-auto text-lg">
-            Active mining operations across India
+            Ongoing and Completed mining operations across India
           </p>
         </div>
 
@@ -129,7 +129,7 @@ export function LocationMap() {
                       lineHeight: "1.5",
                     }}
                   >
-                    Choose a Active state to view project details.
+                    Choose a Ongoing state to view project details.
                   </p>
                 </div>
 
@@ -178,7 +178,7 @@ export function LocationMap() {
                         letterSpacing: "0.5px",
                       }}
                     >
-                      ACTIVE
+                      Ongoing
                     </p>
                   </div>
 
@@ -404,7 +404,7 @@ export function LocationMap() {
                         fontWeight: "600",
                       }}
                     >
-                      Active Projects
+                      Ongoing Projects
                     </span>
                   </div>
                   <div

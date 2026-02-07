@@ -20,7 +20,7 @@ export function PerformanceStatsPremium() {
     },
     {
       icon: Truck,
-      value: 1100,
+      value: 1200,
       suffix: "+",
       label: "Equipment Fleet",
       description: "Heavy machinery in service",
@@ -43,7 +43,7 @@ export function PerformanceStatsPremium() {
     },
     {
       icon: MapPin,
-      value: 10,
+      value: 7,
       suffix: "+",
       label: "Indian States",
       description: "Active & completed projects",
