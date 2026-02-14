@@ -6,6 +6,7 @@ export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [showWhiteBg, setShowWhiteBg] = useState(false);
   const [hideHeader, setHideHeader] = useState(false);
+  const [activeSection, setActiveSection] = useState("home");
 
   // Detect hero visibility (background change)
   useEffect(() => {
@@ -48,61 +49,103 @@ export function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Track active section
+  useEffect(() => {
+    const sections = ["home", "about", "projects", "fleet", "contact"];
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && entry.target.id) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      {
+        threshold: 0.3,
+        rootMargin: "-100px 0px -66% 0px",
+      },
+    );
+
+    sections.forEach((id) => {
+      const element = document.getElementById(id);
+      if (element) observer.observe(element);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
   const navigation = [
-    { name: "Home", href: "#home" },
-    { name: "About Us", href: "#about" },
-    { name: "Projects", href: "#projects" },
-    { name: "Our Fleet", href: "#fleet" },
-    { name: "Contact Us", href: "#contact" },
+    { name: "Home", href: "#home", id: "home" },
+    { name: "About Us", href: "#about", id: "about" },
+    { name: "Projects", href: "#projects", id: "projects" },
+    { name: "Our Fleet", href: "#fleet", id: "fleet" },
+    { name: "Contact Us", href: "#contact", id: "contact" },
   ];
 
   return (
     <header
       className={`
         fixed top-0 z-50 w-full
-        transition-all duration-300 ease-in-out
-        ${showWhiteBg ? "bg-white" : "bg-transparent"}
+        transition-all duration-500 ease-in-out
+        ${showWhiteBg ? "bg-white shadow-md" : "bg-transparent"}
         ${hideHeader ? "-translate-y-full" : "translate-y-0"}
       `}
     >
-      <nav
-        className={`
-          py-4 px-4 sm:px-6 lg:px-20 transition-all duration-300
-          ${showWhiteBg ? "border-b border-gray-200" : "border-b border-transparent"}
-        `}
-      >
+      <nav className="py-4 px-4 sm:px-6 lg:px-20 transition-all duration-300">
         <div className="flex h-full items-center justify-between">
           {/* LOGO */}
-          {/* WHITE LOGO CODE */}
-          {/* <img
-            src={logo}
-            alt="Durga Infra Mining Pvt Ltd"
-            className={`
-              h-[56px] w-auto object-contain transition-all duration-300
-              ${showWhiteBg ? "" : "brightness-0 invert"}
-            `}
-          /> */}
+          <a href="#home">
+            <img
+              src={logo}
+              alt="Durga Infra Mining Pvt Ltd"
+              className="h-[56px] w-auto object-contain transition-all duration-300 group-hover:scale-105"
+            />
+          </a>
 
-          <img
-            src={logo}
-            alt="Durga Infra Mining Pvt Ltd"
-            className={`
-              h-[56px] w-auto object-contain transition-all duration-300
-            `}
-          />
           {/* DESKTOP NAV */}
-          <div className="hidden md:flex items-center space-x-12 text-[1.15rem]">
+          <div className="hidden md:flex items-center gap-5 text-[1.08rem]">
             {navigation.map((item) => (
               <a
                 key={item.name}
                 href={item.href}
                 className={`
-                  font-semibold tracking-wide transition-colors
+                  relative px-4 py-2 font-semibold tracking-wide transition-all duration-300 group
                   ${showWhiteBg ? "text-[#626162]" : "text-white"}
-                  hover:text-[#E77B2E]
+                  ${
+                    activeSection === item.id
+                      ? showWhiteBg
+                        ? "text-[#E77B2E]"
+                        : "text-white"
+                      : ""
+                  }
+                  ${showWhiteBg ? "hover:text-[#E77B2E]" : "hover:text-white"}
                 `}
               >
                 {item.name}
+
+                {/* Animated underline */}
+                <span
+                  className={`
+                    absolute bottom-0 left-0 h-[3px] transition-all duration-300 ease-out
+                    ${showWhiteBg ? "bg-[#E77B2E]" : "bg-white"}
+                    ${activeSection === item.id ? "w-full" : "w-0"}
+                    group-hover:w-full
+                  `}
+                />
+
+                {/* Background on hover - Gradient for transparent, solid for white */}
+                <span
+                  className={`
+                    absolute inset-0 -z-10 rounded-md transition-all duration-300 ease-out opacity-0
+                    ${
+                      showWhiteBg
+                        ? "bg-[#F6F6F6]"
+                        : "bg-gradient-to-r from-[#E77B2E] to-[#FF9A56]"
+                    }
+                    group-hover:opacity-100
+                  `}
+                />
               </a>
             ))}
           </div>
@@ -110,9 +153,12 @@ export function Header() {
           {/* MOBILE BUTTON */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className={`md:hidden ${
-              showWhiteBg ? "text-[#626162]" : "text-white"
-            } hover:text-[#E77B2E]`}
+            className={`
+              md:hidden p-2 rounded-lg transition-all duration-300
+              ${showWhiteBg ? "text-[#626162] hover:bg-[#F6F6F6]" : "text-white hover:bg-gradient-to-r hover:from-[#E77B2E] hover:to-[#FF9A56]"}
+              ${showWhiteBg ? "hover:text-[#E77B2E]" : "hover:text-white"}
+            `}
+            aria-label="Toggle menu"
           >
             {mobileMenuOpen ? <X size={26} /> : <Menu size={26} />}
           </button>
@@ -123,12 +169,22 @@ export function Header() {
       {mobileMenuOpen && showWhiteBg && (
         <div className="md:hidden bg-white border-t border-gray-200">
           <div className="px-6 py-4 space-y-1">
-            {navigation.map((item) => (
+            {navigation.map((item, index) => (
               <a
                 key={item.name}
                 href={item.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="block px-3 py-2 font-medium text-[#626162] hover:bg-[#F6F6F6] hover:text-[#E77B2E]"
+                className={`
+                  block px-4 py-3 rounded-lg font-semibold text-[1rem] transition-all duration-300 hover:translate-x-2
+                  ${
+                    activeSection === item.id
+                      ? "bg-gradient-to-r from-[#E77B2E] to-[#FF9A56] text-white"
+                      : "text-[#626162] hover:bg-[#F6F6F6] hover:text-[#E77B2E]"
+                  }
+                `}
+                style={{
+                  animationDelay: `${index * 50}ms`,
+                }}
               >
                 {item.name}
               </a>
