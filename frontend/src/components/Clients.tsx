@@ -4,9 +4,10 @@ import nlc from "../assets/Client Logo/NLC.png";
 import RSSM from "../assets/Client Logo/RSSM.png";
 import sccl from "../assets/Client Logo/SCCL.png";
 import wcl from "../assets/Client Logo/WCL.png";
-
+import ssnnl from "../assets/Client Logo/SSNNL.png";
+import geb from "../assets/Client Logo/GEB.jpg";
 export function Clients() {
-  const logos = [adani, gmdc, wcl, nlc, RSSM, sccl];
+  const logos = [adani, gmdc, wcl, nlc, RSSM, sccl, ssnnl, geb];
 
   return (
     <section className="bg-white py-16 overflow-hidden">

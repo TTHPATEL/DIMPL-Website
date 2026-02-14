@@ -61,7 +61,7 @@ const IndiaMap: React.FC<IndiaMapProps> = ({ onStateSelect }) => {
       "IN-TG",
     ];
     // Completed states
-    const completedStates = ["IN-MH", "IN-RJ"];
+    const completedStates = ["IN-MH", "IN-RJ", "IN-TN"];
 
     // Default settings for all states
     polygonSeries.mapPolygons.template.setAll({

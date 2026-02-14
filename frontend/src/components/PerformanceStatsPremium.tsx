@@ -12,7 +12,7 @@ export function PerformanceStatsPremium() {
     },
     {
       icon: Users,
-      value: 4000,
+      value: 5000,
       suffix: "+",
       label: "Workforce",
       description: "On-ground professionals",
@@ -28,9 +28,9 @@ export function PerformanceStatsPremium() {
     },
     {
       icon: Mountain,
-      value: 11700,
-      suffix: "+",
-      label: "LBCM Overburden",
+      value: 147,
+      suffix: "+ Million",
+      label: "CuM/Year Overburden",
       description: "Total awarded quantity",
       separator: ",",
     },

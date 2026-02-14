@@ -1,11 +1,13 @@
 import { useState, useRef } from "react";
 import { ArrowUpRight } from "lucide-react";
 // import { ArrowRight } from "lucide-react";
-import dig from "../assets/History Photo/Dig.jpg";
-import thermal2 from "../assets/History Photo/Thermal2.jpg";
+import dig from "../assets/History Photo/Pumping.jpg";
+import thermal2 from "../assets/History Photo/Thermal.jpg";
 import od from "../assets/Mines/GJ.png";
 import TL2 from "../assets/Mines/TL2.png";
-
+import canal from "../assets/History Photo/Canal.png";
+import foundation from "../assets/History Photo/Foundation.png";
+import neyveli from "../assets/History Photo/Neyveli.png";
 export function AboutUs() {
   const milestones = [
     {
@@ -14,64 +16,62 @@ export function AboutUs() {
       // location: "BHUJ-KUTCH, GUJARAT",
       title: "Foundation as Durga Construction Co.",
       description:
-        "Durga Construction Co. was established as a partnership firm with a small set of earthwork equipment, including one Tata Hitachi-083 excavator and 4-5 dumpers. The company began its journey as a sub contractor, focusing on basic earthwork activities.",
-      image: dig,
+        "Durga Construction Co. was established as a partnership firm with a small fleet of earthwork equipment, beginning its journey with earthwork activities.",
+      image: foundation,
     },
     {
       id: 2,
-      year: "2000–2010",
-      // location: "MULTI-STATE OPERATIONS",
-      title: "Steady Growth and Experience",
+      year: "1995",
+      // location: "BHUJ-KUTCH, GUJARAT",
+      title: "Irrigation Infrastructure",
       description:
-        "With growing experience, the firm executed earthwork projects for roads, dams, canals, and thermal power stations. This period marked steady expansion in capability, manpower, and execution of increasingly complex works.",
-      image: thermal2,
+        "We executed the Narmada Canal bund at Kalol City for Sardar Sarovar Narmada Nigam Ltd. (SSNNL), covering approximately 4 km, marking an early milestone in our canal infrastructure work.",
+      image: canal,
     },
     {
       id: 3,
-      year: "2010–2017",
-      // location: "RAJASTHAN & TELANGANA",
-      title: "Entry into Large Scale Mining",
+      year: "1999",
+      // location: "MULTI-STATE OPERATIONS",
+      title: "Pumping Station Infrastructure",
       description:
-        "The company evolved into a main contractor for State and Central Government projects. Major mining assignments were completed for GMDC, SCCL, and RSMM, establishing a strong presence in coal and lignite mining.",
-      image: od,
+        "We constructed the first Narmada Canal pumping station at Dhanki village, Surendranagar, for SSNNL approximately 700 meters, improving water distribution and supporting irrigation in the region.",
+      image: dig,
     },
     {
       id: 4,
-      year: "2018–2019",
+      year: "2003",
       // location: "MAHARASHTRA & TELANGANA",
-      title: "Handling Complex Geological Conditions",
+      title: "Lignite Mining Project",
       description:
-        "Projects were executed under challenging site conditions involving hard rock, unstable benches, and long lead and lift requirements. These works strengthened the company's operational and technical capabilities.",
-      image: TL2,
+        "Neyveli Mine-II, Tamil Nadu, was our first lignite mining project, executed in joint venture with Ranjit Construction Pvt. Ltd., marking our entry into the mining sector.",
+      image: neyveli,
     },
     {
       id: 5,
-      year: "2020",
-      // location: "PAN-INDIA",
-      title: "Transition to Corporate Entity",
+      year: "2005",
+      // location: "RAJASTHAN & TELANGANA",
+      title: "Thermal Power Infrastructure",
       description:
-        "On 09/09/2020, the partnership firm was converted into Durga Infra Mining Private Limited. This transition marked a new phase of structured growth, governance, and nationwide operations.",
-      image: TL2,
+        "We constructed an Ash Dyke Pond at Wanakbori Thermal Power Station for Gujarat Electricity Board, supporting safe ash management and large scale public sector power generation.",
+      image: thermal2,
     },
     {
       id: 6,
-      year: "2021–2024",
-      // location: "GUJARAT & RAJASTHAN",
-      title: "Major Mining Achievements",
+      year: "2008",
+      // location: "PAN-INDIA",
+      title: "First Independent Mining Project",
       description:
-        "At GMDC Rajpardi, extensive dewatering of nearly 50,000 cubic meters per day enabled lignite extraction under heavy water ingress. At Tadkeshwar, overburden removal of about 1 lakh cubic meters per day was achieved despite sliding strata.",
-      image:
-        "https://images.unsplash.com/photo-1581092918484-8cf2c4a5c6d4?w=1200&q=80",
+        "The Tadkeshwar lignite mines project, awarded directly by GMDC, marked our first independently executed mining operation and a major step in our mining sector growth.",
+      image: TL2,
     },
     {
       id: 7,
-      year: "2025",
-      // location: "NATIONWIDE PRESENCE",
-      title: "Established National Footprint",
+      year: "2010",
+      // location: "GUJARAT & RAJASTHAN",
+      title: "Coal Mining Project",
       description:
-        "DIMPL operates multiple large mining projects across India with a strong fleet of equipment and a skilled workforce. The company continues to deliver consistent performance across diverse geological and operational conditions.",
-      image:
-        "https://images.unsplash.com/photo-1581092918484-8cf2c4a5c6d4?w=1200&q=80",
+        "Kalyani Khani OCP, Mandamarri, Telangana, was our first coal mining project, executed for Singareni Collieries Company Limited (SCCL), marking our entry into large scale coal mining operations.",
+      image: od,
     },
   ];
 
@@ -164,24 +164,11 @@ export function AboutUs() {
           to {
             opacity: 1;
             transform: scale(1);
-
-
-
-
-
-
-
-
           }
         }
         .animate-fadeIn {
           animation: fadeIn 0.4s ease-in-out;
         }
-
-
-
-
-
       `}</style>
 
       <section
@@ -241,7 +228,7 @@ export function AboutUs() {
             <div className="hidden lg:block lg:w-2/3 w-full relative group">
               <div className="flex gap-6 lg:gap-10 items-stretch h-[450px] sm:h-[500px] lg:h-[600px]">
                 {/* Year Selector */}
-                <div className="flex flex-col justify-center gap-4 sm:gap-6 py-4">
+                {/* <div className="flex flex-col justify-center gap-4 sm:gap-6 py-4">
                   {milestones.map((m, idx) => {
                     const isActive = idx === activeIndex;
                     return (
@@ -257,6 +244,39 @@ export function AboutUs() {
                               : "text-gray-400 hover:bg-[#E5710A]/10"
                           }`}
                         >
+                          <span className="text-base sm:text-lg font-bold whitespace-nowrap">
+                            {m.year}
+                          </span>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div> */}
+
+                <div className="flex flex-col justify-center gap-4 sm:gap-6 py-4">
+                  {milestones.map((m, idx) => {
+                    const isActive = idx === activeIndex;
+                    return (
+                      <div
+                        key={m.id}
+                        onClick={() => handleYearClick(idx)}
+                        className="cursor-pointer"
+                      >
+                        <div
+                          className={`flex items-center gap-2 min-w-[90px] sm:min-w-[110px] px-4 sm:px-5 py-2 sm:py-2.5 rounded-full transition-all ${
+                            isActive
+                              ? "bg-[#E5710A] text-white"
+                              : "text-gray-400 hover:bg-[#E5710A]/10"
+                          }`}
+                        >
+                          {/* Dot */}
+                          <span
+                            className={`w-2.5 h-2.5 rounded-full ${
+                              isActive ? "bg-white" : "bg-gray-400"
+                            }`}
+                          />
+
+                          {/* Year */}
                           <span className="text-base sm:text-lg font-bold whitespace-nowrap">
                             {m.year}
                           </span>
