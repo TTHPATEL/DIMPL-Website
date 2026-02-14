@@ -298,7 +298,7 @@ export function AboutUs() {
                     alt={activeMilestone.title}
                     className="absolute inset-0 w-full h-full object-cover"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
+                  <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/40 to-transparent"></div>
                   <div className="absolute inset-0 p-2 sm:p-4 lg:p-8 flex flex-col justify-end">
                     <span className="text-[#F1C40F] font-bold text-xs sm:text-sm uppercase">
                       {/* {activeMilestone.location} */}
@@ -363,7 +363,7 @@ export function AboutUs() {
                     alt={activeMilestone.title}
                     className="absolute inset-0 w-full h-full object-cover animate-fadeIn"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/20 to-transparent"></div>
+                  <div className="absolute inset-0 bg-linear-to-t from-black/40 via-black/20 to-transparent"></div>
 
                   {/* Content */}
                   {/* <div className="absolute inset-0 p-6 sm:p-8 flex flex-col justify-end">
