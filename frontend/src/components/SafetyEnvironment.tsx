@@ -1,12 +1,4 @@
-import {
-  Shield,
-  Leaf,
-  Award,
-  Users,
-  Droplet,
-  TreePine,
-  HardHat,
-} from "lucide-react";
+import { Leaf, Award, Users, Droplet, TreePine, HardHat } from "lucide-react";
 import planning from "../assets/Extra/planning.jpeg";
 export function SafetyEnvironment() {
   const safetyFeatures = [

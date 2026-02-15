@@ -1,12 +1,8 @@
-import bgImage from "../assets/BG Images/AboutUsBG.jpg";
 import mineGJ from "../assets/Mines/GJ.png";
 import { VisionMission } from "../components/VisionMission";
 import { SafetyEnvironment } from "../components/SafetyEnvironment";
 import Achievements from "../components/Achievements";
-import { AboutUs } from "../components/AboutUs";
-import aboutImg from "../assets/Mines/TL2.png";
 import Leardership from "../components/Leardership";
-import trophy from "../assets/Extra/Trophy.png"; // replace with your image
 
 export function AboutUsPage() {
   return (

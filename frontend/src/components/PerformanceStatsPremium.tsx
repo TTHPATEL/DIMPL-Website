@@ -1,4 +1,4 @@
-import { Users, Factory, MapPin, Award, Stone } from "lucide-react";
+import { Users, MapPin, Award, Stone } from "lucide-react";
 import CountUp from "./ui/CountUp";
 import { mdiExcavator, mdiDumpTruck } from "@mdi/js";
 import Icon from "@mdi/react";
