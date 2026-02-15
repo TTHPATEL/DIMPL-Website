@@ -1,7 +1,17 @@
-import { Users, Truck, Mountain, Factory, MapPin, Award } from "lucide-react";
+import { Users, Mountain, Factory, MapPin, Award } from "lucide-react";
 import CountUp from "./ui/CountUp";
+import { mdiExcavator } from "@mdi/js";
+import Icon from "@mdi/react";
 
 export function PerformanceStatsPremium() {
+  const DumpTruckIcon = ({
+    size = 24,
+    className,
+  }: {
+    size?: number;
+    className?: string;
+  }) => <Icon path={mdiExcavator} size={size / 24} className={className} />;
+
   const stats = [
     {
       icon: Award,
@@ -19,7 +29,7 @@ export function PerformanceStatsPremium() {
       separator: ",",
     },
     {
-      icon: Truck,
+      icon: DumpTruckIcon,
       value: 1200,
       suffix: "+",
       label: "Equipment Fleet",
