@@ -1,7 +1,6 @@
 import bgImage from "../assets/BG Images/AboutUsBG.jpg";
 import mineGJ from "../assets/Mines/GJ.png";
 import { VisionMission } from "../components/VisionMission";
-import { LeadershipTeam } from "../components/LeadershipTeam";
 import { SafetyEnvironment } from "../components/SafetyEnvironment";
 import { Achievements } from "../components/Achievements";
 import { AboutUs } from "../components/AboutUs";
