@@ -1,6 +1,7 @@
 import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import logo from "@/assets/Logo/DIMPL_Logo_Long_SVG.svg";
+import { Link, useLocation } from "react-router-dom";
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -8,10 +9,17 @@ export function Header() {
   const [hideHeader, setHideHeader] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
 
+  const location = useLocation();
+
   // Detect hero visibility (background change)
   useEffect(() => {
-    const hero = document.getElementById("home");
-    if (!hero) return;
+    // Find the first section on the page (hero section)
+    const firstSection = document.querySelector("section");
+    if (!firstSection) {
+      // If no section found, show white background
+      setShowWhiteBg(true);
+      return;
+    }
 
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -22,9 +30,9 @@ export function Header() {
       },
     );
 
-    observer.observe(hero);
+    observer.observe(firstSection);
     return () => observer.disconnect();
-  }, []);
+  }, [location.pathname]); // Re-run when route changes
 
   // Detect scroll direction (hide / show header)
   useEffect(() => {
@@ -76,11 +84,11 @@ export function Header() {
   }, []);
 
   const navigation = [
-    { name: "Home", href: "#home", id: "home" },
-    { name: "About Us", href: "#about", id: "about" },
-    { name: "Projects", href: "#projects", id: "projects" },
-    { name: "Our Fleet", href: "#fleet", id: "fleet" },
-    { name: "Contact Us", href: "#contact", id: "contact" },
+    { name: "Home", href: "/", id: "home" },
+    { name: "About Us", href: "/about", id: "about" },
+    { name: "Projects", href: "/projects", id: "projects" },
+    { name: "Our Fleet", href: "/fleet", id: "fleet" },
+    { name: "Contact Us", href: "/contact", id: "contact" },
   ];
 
   return (
@@ -92,28 +100,34 @@ export function Header() {
         ${hideHeader ? "-translate-y-full" : "translate-y-0"}
       `}
     >
-      <nav className="py-4 px-4 sm:px-6 lg:px-20 transition-all duration-300">
+      <nav className="py-4 px-4 sm:px-6 lg:pl-20 lg:pr-17 transition-all duration-300">
         <div className="flex h-full items-center justify-between">
           {/* LOGO */}
-          <a href="#home">
+          <Link to="/">
             <img
               src={logo}
               alt="Durga Infra Mining Pvt Ltd"
               className="h-[56px] w-auto object-contain transition-all duration-300 group-hover:scale-105"
             />
-          </a>
+          </Link>
 
           {/* DESKTOP NAV */}
-          <div className="hidden md:flex items-center gap-5 text-[1.08rem]">
-            {navigation.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                className={`
+          <div className="hidden md:flex items-center gap-8 text-[1.08rem]">
+            {navigation.map((item) => {
+              // Check if this menu item is active based on current route
+              const isActive =
+                location.pathname === item.href ||
+                (location.pathname === "/" && activeSection === item.id);
+
+              return (
+                <Link
+                  key={item.name}
+                  to={item.href}
+                  className={`
                   relative px-4 py-2 font-semibold tracking-wide transition-all duration-300 group
                   ${showWhiteBg ? "text-[#626162]" : "text-white"}
                   ${
-                    activeSection === item.id
+                    isActive
                       ? showWhiteBg
                         ? "text-[#E77B2E]"
                         : "text-white"
@@ -121,22 +135,22 @@ export function Header() {
                   }
                   ${showWhiteBg ? "hover:text-[#E77B2E]" : "hover:text-white"}
                 `}
-              >
-                {item.name}
+                >
+                  {item.name}
 
-                {/* Animated underline */}
-                <span
-                  className={`
+                  {/* Animated underline */}
+                  <span
+                    className={`
                     absolute bottom-0 left-0 h-[3px] transition-all duration-300 ease-out
                     ${showWhiteBg ? "bg-[#E77B2E]" : "bg-white"}
-                    ${activeSection === item.id ? "w-full" : "w-0"}
+                    ${isActive ? "w-full" : "w-0"}
                     group-hover:w-full
                   `}
-                />
+                  />
 
-                {/* Background on hover - Gradient for transparent, solid for white */}
-                <span
-                  className={`
+                  {/* Background on hover - Gradient for transparent, solid for white */}
+                  <span
+                    className={`
                     absolute inset-0 -z-10 rounded-md transition-all duration-300 ease-out opacity-0
                     ${
                       showWhiteBg
@@ -145,9 +159,10 @@ export function Header() {
                     }
                     group-hover:opacity-100
                   `}
-                />
-              </a>
-            ))}
+                  />
+                </Link>
+              );
+            })}
           </div>
 
           {/* MOBILE BUTTON */}

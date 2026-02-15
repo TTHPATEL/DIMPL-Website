@@ -4,7 +4,6 @@ import bgImage from "@/assets/BG Images/BG2.png";
 export function Hero() {
   return (
     <section
-      id="home"
       // className="relative h-[100vh] min-h-[600px] flex items-center pt-[88px] overflow-hidden"
       className="relative h-screen flex items-center overflow-hidden"
     >

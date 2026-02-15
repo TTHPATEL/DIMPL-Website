@@ -3,7 +3,7 @@ import logo from "../assets/Logo/DIMPL_Logo_Long_SVG.svg"; // update path if nee
 import linkedinIcon from "../assets/linkedin.png";
 export function Footer() {
   return (
-    <footer id="contact" className="bg-[#F6F6F6] text-[#1F1F1F]">
+    <footer className="bg-[#F6F6F6] text-[#1F1F1F]">
       {/* ================= TOP FOOTER ================= */}
       <div className="max-w-7xl mx-auto px-4 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-10">

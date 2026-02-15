@@ -11,5 +11,5 @@ export default defineConfig({
       "@": path.resolve(__dirname, "src"),
     },
   },
-  base: "/DIMPL-Website/",
+  base: process.env.NODE_ENV === "production" ? "/DIMPL-Website/" : "/",
 });

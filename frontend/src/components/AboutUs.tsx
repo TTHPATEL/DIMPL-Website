@@ -186,7 +186,7 @@ export function AboutUs() {
           </p>
         </div>
 
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-7xl px-5">
           <div className="flex flex-col lg:flex-row gap-8 sm:gap-12 lg:gap-19 items-start">
             {/* Left Column - Company Info */}
             <div className="w-full lg:w-1/3 px-0">

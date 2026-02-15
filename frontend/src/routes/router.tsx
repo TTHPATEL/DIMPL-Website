@@ -4,6 +4,7 @@ import RootLayout from "../layouts/RootLayout";
 
 // Lazy load components
 const Home = lazy(() => import("../pages/HomeScreen"));
+const AboutUsPage = lazy(() => import("../pages/AboutUsPage"));
 
 // Error boundary component
 function ErrorBoundary() {
@@ -20,6 +21,10 @@ const routes = {
     {
       index: true,
       element: <Home />,
+    },
+    {
+      path: "about",
+      element: <AboutUsPage />,
     },
   ],
   protected: [
