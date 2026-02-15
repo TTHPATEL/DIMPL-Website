@@ -1,16 +1,23 @@
-import { Users, Mountain, Factory, MapPin, Award } from "lucide-react";
+import { Users, Factory, MapPin, Award, Stone } from "lucide-react";
 import CountUp from "./ui/CountUp";
-import { mdiExcavator } from "@mdi/js";
+import { mdiExcavator, mdiDumpTruck } from "@mdi/js";
 import Icon from "@mdi/react";
 
 export function PerformanceStatsPremium() {
-  const DumpTruckIcon = ({
+  const ExcavatorIcon = ({
     size = 24,
     className,
   }: {
     size?: number;
     className?: string;
   }) => <Icon path={mdiExcavator} size={size / 24} className={className} />;
+  const DumperIcon = ({
+    size = 24,
+    className,
+  }: {
+    size?: number;
+    className?: string;
+  }) => <Icon path={mdiDumpTruck} size={size / 24} className={className} />;
 
   const stats = [
     {
@@ -29,7 +36,7 @@ export function PerformanceStatsPremium() {
       separator: ",",
     },
     {
-      icon: DumpTruckIcon,
+      icon: DumperIcon,
       value: 1200,
       suffix: "+",
       label: "Equipment Fleet",
@@ -37,15 +44,15 @@ export function PerformanceStatsPremium() {
       separator: ",",
     },
     {
-      icon: Mountain,
+      icon: ExcavatorIcon,
       value: 147,
       suffix: "+ Million",
       label: "CuM/Year Overburden",
-      description: "Total awarded quantity",
+      description: "Handled",
       separator: ",",
     },
     {
-      icon: Factory,
+      icon: Stone,
       value: 13,
       suffix: "+ Million",
       label: "MT/Year Capacity",

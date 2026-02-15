@@ -2,9 +2,11 @@ import bgImage from "../assets/BG Images/AboutUsBG.jpg";
 import mineGJ from "../assets/Mines/GJ.png";
 import { VisionMission } from "../components/VisionMission";
 import { SafetyEnvironment } from "../components/SafetyEnvironment";
-import { Achievements } from "../components/Achievements";
+import Achievements from "../components/Achievements";
 import { AboutUs } from "../components/AboutUs";
 import aboutImg from "../assets/Mines/TL2.png";
+import Leardership from "../components/Leardership";
+import trophy from "../assets/Extra/Trophy.png"; // replace with your image
 
 export function AboutUsPage() {
   return (
@@ -68,19 +70,30 @@ export function AboutUsPage() {
           <VisionMission />
         </div>
       </section>
-
+      <Leardership />
       {/* Image */}
       {/* <div className="relative">
-        <div className="relative rounded-2xl overflow-hidden shadow-2xl group">
+        <div className="relative rounded-xl px-7 overflow-hidden shadow-2xl group">
           <img
-            src={mineGJ}
+            src={trophy}
             alt="DIMPL Mining Operations"
             className="w-full h-[400px] object-cover group-hover:scale-105 transition-transform duration-700"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
         </div>
       </div> */}
+      {/* <div className="relative">
+        <div className="relative rounded-xl px-7 overflow-hidden ">
+          <img
+            src={trophy}
+            alt="DIMPL Mining Operations"
+            className="w-full h-[300px] object-cover "
+          />
+          <div className="absolute inset-0 " />
+        </div>
+      </div> */}
 
+      <Achievements />
       {/* Safety & Environment */}
       <SafetyEnvironment />
 

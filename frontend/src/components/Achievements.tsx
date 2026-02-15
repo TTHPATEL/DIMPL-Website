@@ -1,180 +1,95 @@
-import {
-  Trophy,
-  Target,
-  Handshake,
-  TrendingUp,
-  Award,
-  CheckCircle,
-} from "lucide-react";
+import trophy from "../assets/Extra/Trophy.png";
 
-export function Achievements() {
-  const achievements = [
+export default function Achievements() {
+  const points = [
     {
-      icon: Trophy,
-      title: "Industry Recognition",
-      description:
-        "Multiple awards for excellence in mining operations and safety standards",
-      year: "2020-2024",
+      title: "Production Commitment",
+      text: "Consistently achieving targeted coal and lignite production since commencement.",
     },
     {
-      icon: Target,
-      title: "Project Milestones",
-      description:
-        "Successfully completed 50+ major mining and infrastructure projects",
-      year: "Since 1994",
+      title: "Difficult Site Capability",
+      text: "Efficient operations in complex geological and terrain conditions.",
     },
     {
-      icon: Handshake,
-      title: "Trusted Partner",
-      description:
-        "Long-term partnerships with leading PSUs and private sector companies",
-      year: "30+ Years",
+      title: "Rajpardi GMDC Operations",
+      text: "Dewatering approx. 50,000 m³/day to ensure continuous lignite extraction.",
     },
     {
-      icon: TrendingUp,
-      title: "Consistent Growth",
-      description:
-        "Year-on-year revenue growth with expanding operational footprint",
-      year: "2015-2024",
-    },
-  ];
-
-  const commitments = [
-    {
-      icon: CheckCircle,
-      title: "Quality Assurance",
-      description: "ISO certified processes ensuring highest quality standards",
+      title: "Tadkeshwar Performance",
+      text: "Achieving 1,00,000 m³/day OB removal with strict safety precautions.",
     },
     {
-      icon: Award,
-      title: "Safety Excellence",
-      description:
-        "Zero-harm workplace culture with industry-leading safety record",
+      title: "Talabira Coal Production",
+      text: "Resolved operational challenges and achieved 1 million MT/month output.",
     },
     {
-      icon: Handshake,
-      title: "Client Satisfaction",
-      description:
-        "95%+ client retention rate through exceptional service delivery",
-    },
-    {
-      icon: Target,
-      title: "Operational Excellence",
-      description:
-        "Continuous improvement in efficiency and productivity metrics",
+      title: "SCCL Manuguru Operations",
+      text: "OB removal at 6 km lead and 300 m lift demonstrating strong capability.",
     },
   ];
 
   return (
-    <section className="py-16 px-4 bg-[#F6F6F6]">
-      <div className="max-w-7xl mx-auto">
-        {/* Header */}
-        <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold text-[#605F5A] mb-3">
-            Achievements & Commitments
+    <section className="py-20 bg-white">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold text-[#626162] mb-6">
+            Our Operational Excellence
           </h2>
-          <p className="text-[#605F5A]/70 text-lg max-w-2xl mx-auto">
-            Celebrating success while staying committed to excellence
-          </p>
-        </div>
+          <div className="w-24 h-1.5 bg-linear-to-r from-[#E77B2E] to-[#F9A056] mx-auto mb-8 rounded-full"></div>
 
-        {/* Achievements Section */}
-        <div className="mb-16">
-          <h3 className="text-3xl font-bold text-[#605F5A] mb-8 text-center">
-            Our Achievements
-          </h3>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {achievements.map((achievement, index) => {
-              const Icon = achievement.icon;
-              return (
-                <div
-                  key={index}
-                  className="group bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-500 border border-[#E5E5E5] hover:border-[#E5710A] relative overflow-hidden"
-                >
-                  {/* Background Decoration */}
-                  <div className="absolute top-0 right-0 w-24 h-24 bg-[#E5710A]/5 rounded-full -mr-12 -mt-12 group-hover:scale-150 transition-transform duration-700" />
-
-                  {/* Icon */}
-                  <div className="relative mb-4">
-                    <div className="w-14 h-14 bg-[#E5710A]/10 rounded-xl flex items-center justify-center group-hover:bg-[#E5710A] transition-all duration-300 group-hover:scale-110">
-                      <Icon
-                        size={28}
-                        className="text-[#E5710A] group-hover:text-white transition-colors duration-300"
-                        strokeWidth={2}
-                      />
-                    </div>
-                  </div>
-
-                  {/* Content */}
-                  <div className="relative">
-                    <div className="text-sm text-[#E5710A] font-semibold mb-2">
-                      {achievement.year}
-                    </div>
-                    <h4 className="text-lg font-bold text-[#605F5A] mb-2">
-                      {achievement.title}
-                    </h4>
-                    <p className="text-[#605F5A]/70 text-sm leading-relaxed">
-                      {achievement.description}
-                    </p>
-                  </div>
-
-                  {/* Bottom Accent */}
-                  <div className="absolute bottom-0 left-0 w-0 h-1 bg-gradient-to-r from-[#E5710A] to-[#E77B2E] group-hover:w-full transition-all duration-500" />
-                </div>
-              );
-            })}
-          </div>
-        </div>
-
-        {/* Commitments Section */}
-        <div className="bg-gradient-to-br from-white to-[#F6F6F6] rounded-3xl p-8 lg:p-12 border border-[#E5E5E5]">
-          <h3 className="text-3xl font-bold text-[#605F5A] mb-8 text-center">
-            Our Commitments
-          </h3>
-          <div className="grid md:grid-cols-2 gap-6">
-            {commitments.map((commitment, index) => {
-              const Icon = commitment.icon;
-              return (
-                <div
-                  key={index}
-                  className="flex items-start gap-4 p-6 rounded-xl bg-white hover:bg-[#E5710A]/5 border border-[#E5E5E5] hover:border-[#E5710A] transition-all duration-300 group"
-                >
-                  <div className="shrink-0 w-12 h-12 bg-[#E5710A]/10 rounded-lg flex items-center justify-center group-hover:bg-[#E5710A] transition-colors duration-300">
-                    <Icon
-                      size={24}
-                      className="text-[#E5710A] group-hover:text-white transition-colors duration-300"
-                      strokeWidth={2}
-                    />
-                  </div>
-                  <div>
-                    <h4 className="text-lg font-semibold text-[#605F5A] mb-2">
-                      {commitment.title}
-                    </h4>
-                    <p className="text-[#605F5A]/70 text-sm leading-relaxed">
-                      {commitment.description}
-                    </p>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-
-          {/* Call to Action */}
-          <div className="mt-12 text-center">
-            <p className="text-[#605F5A]/80 text-lg mb-6">
-              Join us in building India's infrastructure future
+          {/* <div className="max-w-4xl mx-auto mb-12">
+            <p className="text-lg md:text-xl text-[#626162]/80 leading-relaxed font-light">
+              Meet the leaders of DIMPL who guide the company with experience
+              and strong values.
             </p>
-            <a
-              href="#contact"
-              className="inline-flex items-center gap-2 bg-[#E5710A] text-white px-8 py-4 rounded-lg text-lg font-bold shadow-lg hover:bg-[#d66609] transition-all duration-300 hover:shadow-xl hover:scale-105"
-            >
-              Partner With Us
-            </a>
+          </div> */}
+        </div>
+        <div className="grid lg:grid-cols-2 gap-14 items-center">
+          {/* Left Image */}
+          <div className="relative group">
+            <div className="overflow-hidden rounded-3xl shadow-2xl">
+              <img
+                src={trophy}
+                alt="Achievements & Excellence"
+                className="w-full h-[460px] object-cover group-hover:scale-105 transition-transform duration-700"
+              />
+            </div>
+
+            {/* overlay gradient */}
+            <div className="absolute inset-0 rounded-3xl bg-linear-to-t from-black/40 to-transparent"></div>
+          </div>
+
+          {/* Right Content */}
+          <div>
+            {/* <h2 className="text-4xl md:text-5xl font-bold text-[#605F5A] mb-5">
+              Operational Excellence
+            </h2>
+
+            <div className="w-20 h-1.5 bg-gradient-to-r from-[#E77B2E] to-[#F9A056] mb-8 rounded-full"></div> */}
+
+            <div className="space-y-6">
+              {points.map((point, index) => (
+                <div key={index} className="flex gap-4 group">
+                  {/* Premium Bullet */}
+                  <div className="mt-2">
+                    <div className="w-3 h-3 rounded-full bg-[#E77B2E] group-hover:scale-125 transition-transform duration-300"></div>
+                  </div>
+
+                  {/* Text */}
+                  <div>
+                    <h4 className="text-lg font-semibold text-[#605F5A]">
+                      {point.title}
+                    </h4>
+                    <p className="text-[#605F5A]/70 text-sm leading-relaxed">
+                      {point.text}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
     </section>
   );
 }
-
-export default Achievements;
