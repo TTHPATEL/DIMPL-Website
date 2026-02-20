@@ -3,7 +3,7 @@ import { LocationMap } from "../components/LocationMap";
 import { Clients } from "../components/Clients";
 import { FleetSlide } from "../components/FleetSlide";
 import { PerformanceStatsPremium } from "../components/PerformanceStatsPremium";
-import { AboutUs } from "../components/AboutUs";
+import { AboutUs } from "../components/AboutUs";  
 import "../index.css";
 const HomeScreen = () => {
   return (

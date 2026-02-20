@@ -1,5 +1,7 @@
 import { Leaf, Award, Users, Droplet, TreePine, HardHat } from "lucide-react";
 import planning from "../assets/Extra/planning.jpeg";
+import envTruck from "../assets/Extra/EnvTruck.jpg";
+// import envTruck from "../assets/Extra/temp.jpg";
 export function SafetyEnvironment() {
   const safetyFeatures = [
     {
@@ -166,8 +168,13 @@ export function SafetyEnvironment() {
             </div>
 
             {/* Stats */}
-            <div className="grid grid-cols-2 gap-6">
-              <div className="bg-white rounded-2xl p-6 text-center shadow-lg border border-[#E5E5E5] hover:border-[#E5710A] transition-all duration-300 group">
+            <div className="grid grid-cols-1 gap-6">
+              <img
+                src={envTruck}
+                alt=""
+                className="w-full h-full object-cover rounded-2xl group-hover:scale-105 transition-transform duration-700"
+              />
+              {/* <div className="bg-white rounded-2xl p-6 text-center shadow-lg border border-[#E5E5E5] hover:border-[#E5710A] transition-all duration-300 group">
                 <div className="text-4xl font-bold text-[#E5710A] mb-2 group-hover:scale-110 transition-transform duration-300">
                   100%
                 </div>
@@ -201,7 +208,7 @@ export function SafetyEnvironment() {
                 <div className="text-sm text-[#605F5A]/80 font-medium">
                   Major Environmental Incidents
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
