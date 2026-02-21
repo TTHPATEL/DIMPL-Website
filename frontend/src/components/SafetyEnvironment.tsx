@@ -1,7 +1,7 @@
 import { Leaf, Award, Users, Droplet, TreePine, HardHat } from "lucide-react";
 import planning from "../assets/Extra/planning.jpeg";
-import envTruck from "../assets/Extra/EnvTruck.jpg";
-// import envTruck from "../assets/Extra/temp.jpg";
+// import envTruck from "../assets/Extra/EnvTruck.jpg";
+import envTruck from "../assets/Extra/temp.jpg";
 export function SafetyEnvironment() {
   const safetyFeatures = [
     {
@@ -42,13 +42,15 @@ export function SafetyEnvironment() {
   ];
 
   return (
-    <section className="py-16 px-4 bg-white">
-      <div className="max-w-7xl mx-auto">
+    <section className="py-16 px-4 sm:px-8 lg:px-10 bg-white">
+      <div className="max-w-[1400px] mx-auto">
         {/* Header */}
         <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold text-[#605F5A] mb-3">
+          <h2 className="text-4xl md:text-5xl font-bold text-[#605F5A] mb-6">
             Safety & Environment
           </h2>
+          <div className="w-24 h-1.5 bg-linear-to-r from-[#E77B2E] to-[#F9A056] mx-auto mb-8 rounded-full"></div>
+
           <p className="text-[#605F5A]/70 text-lg max-w-2xl mx-auto">
             Committed to the highest standards of safety and environmental
             responsibility
@@ -172,7 +174,7 @@ export function SafetyEnvironment() {
               <img
                 src={envTruck}
                 alt=""
-                className="w-full h-full object-cover rounded-2xl group-hover:scale-105 transition-transform duration-700"
+                className="w-full h-[450px] object-cover rounded-2xl group-hover:scale-105 transition-transform duration-700"
               />
               {/* <div className="bg-white rounded-2xl p-6 text-center shadow-lg border border-[#E5E5E5] hover:border-[#E5710A] transition-all duration-300 group">
                 <div className="text-4xl font-bold text-[#E5710A] mb-2 group-hover:scale-110 transition-transform duration-300">
